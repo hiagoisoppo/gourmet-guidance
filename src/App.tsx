@@ -1,20 +1,14 @@
-import React from 'react';
-import './App.css';
-import rockGlass from './images/rockGlass.svg';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Route, Routes } from 'react-router-dom';
+
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <div className="meals">
-      <span className="logo">TRYBE</span>
-      <object
-        className="rocksGlass"
-        type="image/svg+xml"
-        data={ rockGlass }
-      >
-        Glass
-      </object>
-    </div>
+    <Routes>
+      <Route path="/" Component={ Home } />
+      <Route path="/*" Component={ NotFound } />
+    </Routes>
   );
 }
 
