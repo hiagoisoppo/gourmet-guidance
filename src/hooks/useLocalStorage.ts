@@ -26,7 +26,7 @@ function useLocalStorage() {
   );
 
   useEffect(() => {
-    localStorage.setItem('user', JSON.stringify(user));
+    if (user.email !== '') localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('doneRecipes', JSON.stringify(doneRecipes));
     localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));

@@ -3,12 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
 function Login() {
+  const { user, setUser } = useLocalStorage();
   const navigate = useNavigate();
-  const { setUser } = useLocalStorage();
-  const [userData, setUserData] = useState({
-    email: '',
-    password: '',
-  });
+  const [password, setPassword] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
 
   const handleValidateForm = (
@@ -16,7 +13,7 @@ function Login() {
   ) => {
     const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/i;
     const isEmailValid = emailRegex.test(userInfo.email);
-    const isPasswordValid = userInfo.password.length > 5;
+    const isPasswordValid = userInfo.password.length > 6;
 
     if (isEmailValid && isPasswordValid) {
       setIsDisabled(false);
@@ -29,7 +26,6 @@ function Login() {
     <form
       onSubmit={ (e) => {
         e.preventDefault();
-        setUser({ email: userData.email });
         navigate('/meals');
       } }
     >
@@ -37,29 +33,28 @@ function Login() {
 
       <label htmlFor="email">
         <input
-          value={ userData.email }
+          value={ user.email }
           data-testid="email-input"
           id="email"
           type="email"
           placeholder="Email"
           onChange={ (e) => {
-            setUserData((prevUserData) => ({ ...prevUserData, email: e.target.value }));
-            handleValidateForm({ ...userData, email: e.target.value });
+            setUser((prevUser) => ({ ...prevUser, email: e.target.value }));
+            handleValidateForm({ email: e.target.value, password });
           } }
         />
       </label>
 
       <label htmlFor="password">
         <input
-          value={ userData.password }
+          value={ password }
           data-testid="password-input"
           id="password"
           type="password"
           placeholder="Password"
           onChange={ (e) => {
-            setUserData((prevUserData) => (
-              { ...prevUserData, password: e.target.value }));
-            handleValidateForm({ ...userData, password: e.target.value });
+            setPassword(e.target.value);
+            handleValidateForm({ email: user.email, password: e.target.value });
           } }
         />
       </label>
