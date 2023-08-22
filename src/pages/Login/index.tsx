@@ -10,7 +10,7 @@ function Login() {
 
   useEffect(() => {
     setUser({ email: '' });
-  }, []);
+  }, [setUser]);
 
   const handleValidateForm = (
     userInfo: { email: string; password: string },
