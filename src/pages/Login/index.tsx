@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
@@ -7,6 +7,10 @@ function Login() {
   const navigate = useNavigate();
   const [password, setPassword] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
+
+  useEffect(() => {
+    setUser({ email: '' });
+  }, []);
 
   const handleValidateForm = (
     userInfo: { email: string; password: string },

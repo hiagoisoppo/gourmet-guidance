@@ -17,17 +17,17 @@ describe('Testa o localStorage', () => {
   const passwordInput = 'password-input';
   const loginBtn = 'login-submit-btn';
 
-  test('Verifica se após o login o email aparece no localstorage', () => {
+  test('Verifica se após o login o email aparece no localstorage', async () => {
     const inputEmail = screen.getByTestId(emailInput);
     const inputPassword = screen.getByTestId(passwordInput);
     const inputButton = screen.getByTestId(loginBtn);
 
-    userEvent.type(inputEmail, 'testedoemail@gmail.com');
-    userEvent.type(inputPassword, '1234567');
-    userEvent.click(inputButton);
+    await userEvent.type(inputEmail, 'testedoemail@gmail.com');
+    await userEvent.type(inputPassword, '1234567');
+    await userEvent.click(inputButton);
 
-    const email = localStorage.getItem('user');
+    const user = JSON.parse(localStorage.getItem('user') as string);
 
-    expect(email).toBe('testedoemail@gmail.com');
+    expect(user.email).toBe('testedoemail@gmail.com');
   });
 });
