@@ -16,7 +16,7 @@ function Footer() {
   };
 
   return (
-    <footer id="footer" data-testid="footer">
+    <footer data-testid="footer">
       <button onClick={ handleDrinksClick }>
         <img src={ drinksIcon } alt="Drinks" data-testid="drinks-bottom-btn" />
       </button>
