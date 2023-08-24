@@ -2,13 +2,17 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Provider } from 'react-redux';
 import App from '../App';
+import store from '../redux';
 
 describe('Testa o Header por completo', () => {
   beforeEach(() => {
     render(
       <BrowserRouter>
-        <App />
+        <Provider store={ store }>
+          <App />
+        </Provider>
       </BrowserRouter>,
     );
   });
@@ -34,7 +38,7 @@ describe('Testa o Header por completo', () => {
     await userEvent.type(inputPassword, passwordTeste);
     await userEvent.click(inputButton);
 
-    const header = screen.getAllByRole('heading', { level: 1 })[1];
+    const header = await screen.findByRole('heading', { name: /meals/i });
     expect(header).toBeInTheDocument();
   });
 

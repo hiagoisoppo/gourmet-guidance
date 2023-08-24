@@ -2,13 +2,17 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Provider } from 'react-redux';
 import App from '../App';
+import store from '../redux';
 
 describe('Testa a página de login', () => {
   beforeEach(() => {
     render(
       <BrowserRouter>
-        <App />
+        <Provider store={ store }>
+          <App />
+        </Provider>
       </BrowserRouter>,
     );
   });
@@ -71,6 +75,6 @@ describe('Testa a página de login', () => {
     await userEvent.click(inputButton);
 
     // Esse é um teste temporario, pois a tela de /meals ainda não foi feita
-    expect(screen.getByRole('heading', { name: /comidas/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /meals/i })).toBeInTheDocument();
   });
 });

@@ -2,13 +2,17 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Provider } from 'react-redux';
 import App from '../App';
+import store from '../redux';
 
 describe('Testa o localStorage', () => {
   beforeEach(() => {
     render(
       <BrowserRouter>
-        <App />
+        <Provider store={ store }>
+          <App />
+        </Provider>
       </BrowserRouter>,
     );
   });

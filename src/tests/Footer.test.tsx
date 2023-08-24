@@ -1,14 +1,18 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
+import store from '../redux';
 
 describe('Testa o componente Footer', () => {
   beforeEach(() => {
     render(
       <BrowserRouter>
-        <App />
+        <Provider store={ store }>
+          <App />
+        </Provider>
       </BrowserRouter>,
     );
   });
@@ -40,7 +44,7 @@ describe('Testa o componente Footer', () => {
 
     await userEvent.click(drinksBtn);
 
-    const h1Drinks = screen.getByText('Bebidas');
+    const h1Drinks = await screen.findByRole('heading', { name: /drinks/i });
     expect(h1Drinks).toBeInTheDocument();
   });
 
@@ -50,7 +54,7 @@ describe('Testa o componente Footer', () => {
 
     await userEvent.click(mealsBtn);
 
-    const h1Meal = screen.getByText('Comidas');
+    const h1Meal = await screen.findByRole('heading', { name: /meals/i });
     expect(h1Meal).toBeInTheDocument();
   });
 });

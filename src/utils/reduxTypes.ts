@@ -4,6 +4,7 @@ import { ThunkDispatch } from 'redux-thunk';
 // Tipagem Geral do Redux
 export interface ReduxGeneralState {
   meals: MealsReducerStateType;
+  drinks: DrinksReducerStateType
 }
 
 export type Dispatch = ThunkDispatch<ReduxGeneralState, null, AnyAction>;
@@ -31,6 +32,7 @@ export interface MealsType {
   strCategory: string;
   strArea: string | null;
   strInstructions: string | null;
+  strMealThumb: string;
   strTags: string | null;
   strYoutube: string | null;
   strIngredient1: string;
@@ -107,7 +109,7 @@ export interface DrinksType {
   strInstructionsIT: string | null;
   ['strInstructionsZH-HANS']: string | null;
   ['strInstructionsZH-HANT']: string | null;
-  strDrinkThumb: string | null;
+  strDrinkThumb: string;
   strIngredient1: string | null;
   strIngredient2: string | null;
   strIngredient3: string | null;

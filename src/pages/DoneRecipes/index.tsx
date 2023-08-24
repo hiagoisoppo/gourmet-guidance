@@ -4,7 +4,6 @@ function DoneRecipes() {
   return (
     <div>
       <Header title="Done Recipes" showSearch={ false } />
-      <h1>Done Recipes</h1>
     </div>
   );
 }

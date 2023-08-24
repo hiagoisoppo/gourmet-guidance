@@ -104,7 +104,7 @@ export function fetchMealsList(option: string, value: string) {
 
   switch (option) {
     case 'name': {
-      FETCH_LINK = `https://themealdb.com/api/json/v1/1/search.php?s=${value}`;
+      FETCH_LINK = `https://www.themealdb.com/api/json/v1/1/search.php?s=${value}`;
       break;
     }
 
