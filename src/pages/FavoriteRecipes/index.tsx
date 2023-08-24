@@ -4,7 +4,7 @@ function FavoriteRecipes() {
   return (
     <div>
       <Header title="Favorite Recipes" showSearch={ false } />
-      <h1>Favorite Recipes</h1>
+      <h1>Receitas Favoritadas</h1>
     </div>
   );
 }
