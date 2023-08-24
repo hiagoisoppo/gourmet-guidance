@@ -63,7 +63,7 @@ export function fetchCategoriesList() {
   return async (dispatch: Dispatch) => {
     try {
       dispatch(drinksRequestStart());
-      const fetchURL = 'www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
+      const fetchURL = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
       const fetchResponse = await fetch(fetchURL);
       const fetchData = await fetchResponse.json();
       const categoriesList = fetchData.drinks.map((item: { strCategory: string }) => (
@@ -108,6 +108,7 @@ export function fetchIngredientsList() {
     }
   };
 }
+
 export function fetchGlassOptionsList() {
   return async (dispatch: Dispatch) => {
     try {
