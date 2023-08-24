@@ -1,5 +1,3 @@
-import Footer from '../../components/Footer';
-
 function NotFound() {
   return (
     <div>

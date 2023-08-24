@@ -40,8 +40,8 @@ describe('Testa o componente Footer', () => {
 
     await userEvent.click(drinksBtn);
 
-    const NOTFOUND = screen.getByText('NOT FOUND');
-    expect(NOTFOUND).toBeInTheDocument();
+    const h1Drinks = screen.getByText('Bebidas');
+    expect(h1Drinks).toBeInTheDocument();
   });
 
   test('Verifica se ao clicar no botão de meals no Footer a rota muda para /meals', async () => {
@@ -50,7 +50,7 @@ describe('Testa o componente Footer', () => {
 
     await userEvent.click(mealsBtn);
 
-    const NOTFOUND = screen.getByText('NOT FOUND');
-    expect(NOTFOUND).toBeInTheDocument();
+    const h1Meal = screen.getByText('Comidas');
+    expect(h1Meal).toBeInTheDocument();
   });
 });
