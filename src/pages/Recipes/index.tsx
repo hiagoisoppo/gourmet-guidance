@@ -8,6 +8,8 @@ import { fetchDrinksList } from '../../redux/actions/drinks';
 import { fetchMealsList } from '../../redux/actions/meals';
 import RecipeCard from '../../components/RecipeCard';
 import CategoriesBar from '../../components/CategoriesBar';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 function Recipes() {
   const [isCategory, setIsCategory] = useState(false);
@@ -25,6 +27,10 @@ function Recipes() {
 
   return (
     <>
+      <Header
+        title={ pathname === '/meals' ? 'Meals' : 'Drinks' }
+        showSearch
+      />
       <CategoriesBar setCategory={ setIsCategory } />
       { isCategory
         ? (
@@ -79,6 +85,7 @@ function Recipes() {
                 },
               )}
           </article>)}
+      <Footer />
     </>
   );
 }
