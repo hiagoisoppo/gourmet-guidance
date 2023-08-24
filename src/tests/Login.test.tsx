@@ -71,8 +71,6 @@ describe('Testa a página de login', () => {
     await userEvent.click(inputButton);
 
     // Esse é um teste temporario, pois a tela de /meals ainda não foi feita
-    const NOTFOUND = await screen.findByText('NOT FOUND');
-
-    expect(NOTFOUND).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /comidas/i })).toBeInTheDocument();
   });
 });

@@ -4,7 +4,7 @@ function Meals() {
   return (
     <div>
       <Header title="Meals" showSearch />
-      <h1>Meals</h1>
+      <h1>Comidas</h1>
     </div>
   );
 }

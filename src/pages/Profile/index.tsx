@@ -4,7 +4,7 @@ function Profile() {
   return (
     <div>
       <Header title="Profile" showSearch={ false } />
-      <h1>Profile</h1>
+      <h1>Perfil</h1>
     </div>
   );
 }
