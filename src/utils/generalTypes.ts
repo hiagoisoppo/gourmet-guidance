@@ -25,6 +25,8 @@ export interface FavoriteRecipesType {
 }
 
 export interface RecipeCardProps {
+  path: '/meals' | '/drinks';
+  id: string;
   name: string;
   index: number;
   thumbImg: string;

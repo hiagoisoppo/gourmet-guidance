@@ -2,13 +2,15 @@ import { Link } from 'react-router-dom';
 import { RecipeCardProps } from '../../utils/generalTypes';
 
 function RecipeCard({
+  path,
+  id,
   name,
   index,
   thumbImg,
 }: RecipeCardProps) {
   return (
     <Link
-      to={ `/meals/${name}` }
+      to={ `${path}/${id}` }
       data-testid={ `${index}-recipe-card` }
     >
       <img

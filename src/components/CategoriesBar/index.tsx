@@ -1,13 +1,14 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { Dispatch, ReduxGeneralState } from '../../utils/reduxTypes';
-import { fetchCategoriesList as fetchDrinksCategories } from '../../redux/actions/drinks';
-import { fetchCategoriesList as fetchMealsCategories } from '../../redux/actions/meals';
+import { fetchCategoriesList as fetchDrinksCategories,
+  fetchDrinksList } from '../../redux/actions/drinks';
+import { fetchCategoriesList as fetchMealsCategories,
+  fetchMealsList } from '../../redux/actions/meals';
 
-function CategoriesBar({
-  setCategory,
-}: { setCategory: React.Dispatch<React.SetStateAction<boolean>> }) {
+function CategoriesBar() {
+  const [displayCategory, setDisplayCategory] = useState('');
   const { pathname } = useLocation();
   const { drinks, meals } = useSelector((state: ReduxGeneralState) => state);
   const dispatch: Dispatch = useDispatch();
@@ -20,8 +21,34 @@ function CategoriesBar({
     }
   }, [dispatch, pathname]);
 
+  useEffect(() => {
+    if (pathname === '/meals') {
+      if (displayCategory === '') {
+        dispatch(fetchMealsList('name', ''));
+      } else {
+        dispatch(fetchMealsList('category', displayCategory));
+      }
+    }
+    if (pathname === '/drinks') {
+      if (displayCategory === '') {
+        dispatch(fetchDrinksList('name', ''));
+      } else {
+        dispatch(fetchDrinksList('category', displayCategory));
+      }
+    }
+  }, [displayCategory, dispatch, pathname]);
+
   return (
     <nav>
+      <button
+        data-testid="All-category-filter"
+        onClick={ (e) => {
+          e.preventDefault();
+          setDisplayCategory('');
+        } }
+      >
+        All
+      </button>
       { pathname === '/meals'
         ? meals.categories.slice(0, 5).map((category, index) => (
           <button
@@ -29,7 +56,11 @@ function CategoriesBar({
             key={ index }
             onClick={ (e) => {
               e.preventDefault();
-              setCategory(true);
+              if (displayCategory === category) {
+                setDisplayCategory('');
+              } else {
+                setDisplayCategory(category);
+              }
             } }
           >
             { category}
@@ -41,7 +72,11 @@ function CategoriesBar({
             key={ index }
             onClick={ (e) => {
               e.preventDefault();
-              setCategory(true);
+              if (displayCategory === category) {
+                setDisplayCategory('');
+              } else {
+                setDisplayCategory(category);
+              }
             } }
           >
             { category}
