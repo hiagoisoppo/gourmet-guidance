@@ -1,11 +1,13 @@
+import DoneRecipes from '../../components/DoneRecipes';
 import Header from '../../components/Header/index';
 
-function DoneRecipes() {
+function DoneRecipesPage() {
   return (
     <div>
       <Header title="Done Recipes" showSearch={ false } />
+      <DoneRecipes />
     </div>
   );
 }
 
-export default DoneRecipes;
+export default DoneRecipesPage;
