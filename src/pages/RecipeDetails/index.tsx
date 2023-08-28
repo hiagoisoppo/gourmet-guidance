@@ -4,7 +4,8 @@ import { useLocation, useParams } from 'react-router-dom';
 
 import { fetchDrinksList } from '../../redux/actions/drinks';
 import { fetchMealsList } from '../../redux/actions/meals';
-import { Dispatch, ReduxGeneralState } from '../../utils/reduxTypes';
+import { Dispatch, DrinksType,
+  MealsType, ReduxGeneralState } from '../../utils/reduxTypes';
 
 function RecipeDetails() {
   const { pathname } = useLocation();
@@ -22,13 +23,13 @@ function RecipeDetails() {
   }, [pathname, recipeId, dispatch]);
 
   return (
-    <>
-      { pathname === `/meals/${recipeId}`
-        ? <span>1</span>
-        : <span>2</span> }
-      <p>{ pathname }</p>
-      <p>{ recipeId }</p>
-    </>
+    pathname === `/meals/${recipeId}`
+      ? (meals.mealsList ?? []).map((meal: MealsType) => {
+        return <h1>a</h1>
+      })
+      : (drinks.drinksList ?? []).map((drink: DrinksType) => {
+        return <h1>b</h1>
+      })
   );
 }
 

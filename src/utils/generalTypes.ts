@@ -31,3 +31,11 @@ export interface RecipeCardProps {
   index: number;
   thumbImg: string;
 }
+
+export interface RecipeDetailsCardProps {
+  path: '/meals' | '/drinks';
+  id: string;
+  name: string;
+  index: number;
+  thumbImg: string;
+}
