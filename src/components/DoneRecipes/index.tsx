@@ -1,29 +1,69 @@
+import useLocalStorage from '../../hooks/useLocalStorage';
+
 function DoneRecipes() {
-  const index = 0;
-  const tagName1 = 'Pasta';
-  const tagName2 = 'Curry';
-  const imageTestId = `${index}-horizontal-image`;
-  const categoryTestId = `${index}-horizontal-top-text`;
-  const nameTestId = `${index}-horizontal-name`;
-  const doneDateTestId = `${index}-horizontal-done-date`;
-  const shareBtnTestId = `${index}-horizontal-share-btn`;
-  const tagTestId1 = `${index}-${tagName1}-horizontal-tag`;
-  const tagTestId2 = `${index}-${tagName2}-horizontal-tag`;
+  const { doneRecipes } = useLocalStorage();
   return (
-    <div>
-      <button data-testid="filter-by-all-btn">All</button>
-      <button data-testid="filter-by-meal-btn">Meals</button>
-      <button data-testid="filter-by-drink-btn">Drinks</button>
-      <img src="" alt="Imagem do Card" data-testid={ imageTestId } />
-      <p data-testid={ categoryTestId }>Categoria da receita</p>
-      <p data-testid={ nameTestId }>Nome da receita</p>
-      <p data-testid={ doneDateTestId }>Data em que foi feita</p>
-      <button data-testid={ shareBtnTestId }>Compartilhar receita</button>
-      <ul>
-        <li data-testid={ tagTestId1 }>Tag1</li>
-        <li data-testid={ tagTestId2 }>Tag2</li>
-      </ul>
-    </div>
+    (doneRecipes ?? []).map((recipe, index) => {
+      if (recipe.type === 'meal') {
+        return (
+          <div key={ recipe.id }>
+            <button data-testid="filter-by-all-btn">All</button>
+            <button data-testid="filter-by-meal-btn">Meals</button>
+            <button data-testid="filter-by-drink-btn">Drinks</button>
+            <img
+              src=""
+              alt="Imagem do Card"
+              data-testid={ `${index}-horizontal-image` }
+            />
+            <p data-testid={ `${index}-horizontal-top-text` }>Categoria da receita</p>
+            <p data-testid={ `${index}-horizontal-name` }>Nome da receita</p>
+            <p data-testid={ `${index}-horizontal-done-date` }>Data em que foi feita</p>
+            <button data-testid={ `${index}-horizontal-share-btn` }>
+              Compartilhar receita
+            </button>
+            <ul>
+              { recipe.tags.map((tagName: string, tagIndex: number) => (
+                <li
+                  key={ tagIndex }
+                  data-testid={ `${index}-${tagName}-horizontal-tag` }
+                >
+                  { tagName }
+                </li>
+              )) }
+            </ul>
+          </div>
+        );
+      }
+      return (
+        <div key={ recipe.id }>
+          <button data-testid="filter-by-all-btn">All</button>
+          <button data-testid="filter-by-meal-btn">Meals</button>
+          <button data-testid="filter-by-drink-btn">Drinks</button>
+          <img
+            src=""
+            alt="Imagem do Card"
+            data-testid={ `${index}-horizontal-image` }
+          />
+          <p data-testid={ `${index}-horizontal-top-text` }>Categoria da receita</p>
+          <p data-testid={ `${index}-horizontal-name` }>Nome da receita</p>
+          <p data-testid={ `${index}-horizontal-done-date` }>Data em que foi feita</p>
+          <button data-testid={ `${index}-horizontal-share-btn` }>
+            Compartilhar receita
+          </button>
+          <ul>
+            { recipe.tags.map((tagName: string, tagIndex: number) => (
+              <li
+                key={ tagIndex }
+                data-testid={ `${index}-${tagName}-horizontal-tag` }
+              >
+                { tagName }
+              </li>
+            )) }
+          </ul>
+        </div>
+      );
+    })
+
   );
 }
 
