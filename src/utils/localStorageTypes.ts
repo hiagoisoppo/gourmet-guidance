@@ -9,7 +9,7 @@ export interface LocalStorageReturnTypes {
   handleInProgressRecipes: (
     id: string,
     type: 'meals' | 'drinks',
-    ingredientsList: number[],
+    ingredientsList: Array<{ checked: boolean, ingredient: string, measure: string }>,
     option: 'add' | 'remove'
   ) => void;
 }
@@ -31,16 +31,16 @@ export interface FavoriteRecipesType {
   type: 'meal' | 'drink';
   nationality: string;
   category: string;
-  alcoholicOrNot: 'alcoholic' | 'non alcoholic' | '';
+  alcoholicOrNot: string;
   name: string;
   image: string;
 }
 
 export interface InProgressRecipesType {
-  drinks: {
-    [id: string]: number[];
+  drinks?: {
+    [id: string]: Array<{ checked: boolean, ingredient: string, measure: string }>;
   },
-  meals: {
-    [id: string]: number[];
+  meals?: {
+    [id: string]: Array<{ checked: boolean, ingredient: string, measure: string }>;
   },
 }

@@ -31,10 +31,10 @@ export interface MealsType {
   strDrinkAlternate: string | null;
   strCategory: string;
   strArea: string | null;
-  strInstructions: string | null;
+  strInstructions: string;
   strMealThumb: string;
   strTags: string | null;
-  strYoutube: string | null;
+  strYoutube: string;
   strIngredient1: string;
   strIngredient2:string | null;
   strIngredient3:string | null;
@@ -99,11 +99,11 @@ export interface DrinksType {
   strDrinkAlternate: string | null;
   strTags: string | null;
   strVideo: string | null;
-  strCategory: string | null;
+  strCategory: string;
   strIBA: string | null;
-  strAlcoholic: string | null;
+  strAlcoholic: 'Alcoholic' | 'Non alcoholic'
   strGlass: string | null;
-  strInstructions: string | null;
+  strInstructions: string;
   strInstructionsDE: string | null;
   strInstructionsFR: string | null;
   strInstructionsIT: string | null;

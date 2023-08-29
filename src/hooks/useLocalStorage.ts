@@ -63,7 +63,7 @@ function useLocalStorage() {
   const handleInProgressRecipes = (
     id: string,
     type: 'meals' | 'drinks',
-    ingredientsList: number[],
+    ingredientsList: Array<{ checked: boolean, ingredient: string, measure: string }>,
     option: 'add' | 'remove',
   ) => {
     if (option === 'add') {

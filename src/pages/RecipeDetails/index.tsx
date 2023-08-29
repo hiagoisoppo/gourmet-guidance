@@ -6,6 +6,8 @@ import { fetchDrinksList } from '../../redux/actions/drinks';
 import { fetchMealsList } from '../../redux/actions/meals';
 import { Dispatch, DrinksType,
   MealsType, ReduxGeneralState } from '../../utils/reduxTypes';
+import DetailsHeader from '../../components/DetailsHeader';
+import DetailsBody from '../../components/DetailsBody';
 
 function RecipeDetails() {
   const { pathname } = useLocation();
@@ -25,10 +27,20 @@ function RecipeDetails() {
   return (
     pathname === `/meals/${recipeId}`
       ? (meals.mealsList ?? []).map((meal: MealsType) => {
-        return <h1>a</h1>
+        return (
+          <article key={ meal.idMeal }>
+            <DetailsHeader recipe={ meal } />
+            <DetailsBody recipeId={ recipeId as string } recipe={ meal } />
+          </article>
+        );
       })
       : (drinks.drinksList ?? []).map((drink: DrinksType) => {
-        return <h1>b</h1>
+        return (
+          <article key={ drink.idDrink }>
+            <DetailsHeader recipe={ drink } />
+            <DetailsBody recipeId={ recipeId as string } recipe={ drink } />
+          </article>
+        );
       })
   );
 }
