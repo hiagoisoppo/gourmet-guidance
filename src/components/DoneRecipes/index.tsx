@@ -11,18 +11,17 @@ function DoneRecipes() {
             <button data-testid="filter-by-meal-btn">Meals</button>
             <button data-testid="filter-by-drink-btn">Drinks</button>
             <img
-              src=""
+              src="recipe.image"
               alt="Imagem do Card"
               data-testid={ `${index}-horizontal-image` }
             />
-            <p data-testid={ `${index}-horizontal-top-text` }>Categoria da receita</p>
-            <p data-testid={ `${index}-horizontal-name` }>Nome da receita</p>
-            <p data-testid={ `${index}-horizontal-done-date` }>Data em que foi feita</p>
-            <button data-testid={ `${index}-horizontal-share-btn` }>
-              Compartilhar receita
-            </button>
+            <p data-testid={ `${index}-horizontal-name` }>{recipe.name}</p>
+            <p data-testid={ `${index}-horizontal-top-text` }>
+              {`${recipe.nationality} - ${recipe.category}`}
+            </p>
+            <p data-testid={ `${index}-horizontal-done-date` }>{recipe.doneDate}</p>
             <ul>
-              { recipe.tags.map((tagName: string, tagIndex: number) => (
+              { recipe.tags.split(',').map((tagName: string, tagIndex: number) => (
                 <li
                   key={ tagIndex }
                   data-testid={ `${index}-${tagName}-horizontal-tag` }
@@ -31,6 +30,9 @@ function DoneRecipes() {
                 </li>
               )) }
             </ul>
+            <button data-testid={ `${index}-horizontal-share-btn` }>
+              Compartilhar receita
+            </button>
           </div>
         );
       }
@@ -40,26 +42,16 @@ function DoneRecipes() {
           <button data-testid="filter-by-meal-btn">Meals</button>
           <button data-testid="filter-by-drink-btn">Drinks</button>
           <img
-            src=""
+            src="recipe.image"
             alt="Imagem do Card"
             data-testid={ `${index}-horizontal-image` }
           />
-          <p data-testid={ `${index}-horizontal-top-text` }>Categoria da receita</p>
-          <p data-testid={ `${index}-horizontal-name` }>Nome da receita</p>
-          <p data-testid={ `${index}-horizontal-done-date` }>Data em que foi feita</p>
+          <p data-testid={ `${index}-horizontal-name` }>{recipe.name}</p>
+          <p data-testid={ `${index}-horizontal-top-text` }>{recipe.alcoholicOrNot}</p>
+          <p data-testid={ `${index}-horizontal-done-date` }>{recipe.doneDate}</p>
           <button data-testid={ `${index}-horizontal-share-btn` }>
             Compartilhar receita
           </button>
-          <ul>
-            { recipe.tags.map((tagName: string, tagIndex: number) => (
-              <li
-                key={ tagIndex }
-                data-testid={ `${index}-${tagName}-horizontal-tag` }
-              >
-                { tagName }
-              </li>
-            )) }
-          </ul>
         </div>
       );
     })

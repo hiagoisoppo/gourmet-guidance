@@ -23,7 +23,7 @@ export interface DoneRecipesType {
   name: string;
   image: string;
   doneDate: string;
-  tags: string[];
+  tags: string;
 }
 
 export interface FavoriteRecipesType {
