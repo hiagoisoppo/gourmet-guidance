@@ -99,7 +99,7 @@ export function fetchIngredientsList() {
   };
 }
 
-export function fetchMealsList(option: string, value: string) {
+export function fetchMealsList(option: string, value: string | undefined = '') {
   let FETCH_LINK = '';
 
   switch (option) {
@@ -128,8 +128,15 @@ export function fetchMealsList(option: string, value: string) {
       break;
     }
 
-    default:
+    case 'id': {
+      FETCH_LINK = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${value}`;
       break;
+    }
+
+    default: {
+      FETCH_LINK = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+      break;
+    }
   }
 
   return async (dispatch: Dispatch) => {

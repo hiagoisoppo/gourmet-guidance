@@ -126,42 +126,41 @@ export function fetchGlassOptionsList() {
   };
 }
 
-export function fetchDrinksList(option: string, value: string) {
+export function fetchDrinksList(option: string, value: string | undefined = '') {
   let FETCH_LINK = '';
-
   switch (option) {
     case 'name': {
       FETCH_LINK = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${value}`;
       break;
     }
-
     case 'first_letter': {
       FETCH_LINK = `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${value}`;
       break;
     }
-
     case 'category': {
       FETCH_LINK = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${value}`;
       break;
     }
-
     case 'alcohol_option': {
       FETCH_LINK = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${value}`;
       break;
     }
-
     case 'ingredient': {
       FETCH_LINK = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${value}`;
       break;
     }
-
     case 'glass_option': {
       FETCH_LINK = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${value}`;
       break;
     }
-
-    default:
+    case 'id': {
+      FETCH_LINK = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${value}`;
       break;
+    }
+    default: {
+      FETCH_LINK = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+      break;
+    }
   }
 
   return async (dispatch: Dispatch) => {
