@@ -10,6 +10,7 @@ import './detailsHeader.css';
 
 function DetailsHeader({ recipe }: { recipe: MealsType | DrinksType }) {
   const { favoriteRecipes, handleFavoriteRecipes } = useLocalStorage();
+  const [linkHasBeenCopied, setLinkHasBeenCopied] = useState(false);
 
   const [favorite, setFavorite] = useState<boolean>(() => {
     return favoriteRecipes.some((favRecipe: FavoriteRecipesType) => {
@@ -33,8 +34,14 @@ function DetailsHeader({ recipe }: { recipe: MealsType | DrinksType }) {
           </span>
         </div>
         <div>
+          {linkHasBeenCopied && <span>Link copied!</span>}
           <button
             data-testid="share-btn"
+            onClick={ async (e) => {
+              e.preventDefault();
+              window.navigator.clipboard.writeText(window.location.href);
+              setLinkHasBeenCopied(true);
+            } }
           >
             <img src={ shareIcon } alt="Share Icon" />
           </button>
