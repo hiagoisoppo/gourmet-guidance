@@ -33,19 +33,21 @@ function Recipes() {
       <CategoriesBar />
       <article>
         { pathname === '/meals'
-          ? meals.mealsList.slice(0, 12).map((recipe: MealsType, index: number) => {
-            return (
-              <RecipeCard
-                key={ recipe.idMeal }
-                id={ recipe.idMeal }
-                path="/meals"
-                index={ index }
-                name={ recipe.strMeal }
-                thumbImg={ recipe.strMealThumb }
-              />
-            );
-          })
-          : drinks.drinksList.slice(0, 12).map(
+          ? (meals.mealsList ?? []).slice(0, 12).map(
+            (recipe: MealsType, index: number) => {
+              return (
+                <RecipeCard
+                  key={ recipe.idMeal }
+                  id={ recipe.idMeal }
+                  path="/meals"
+                  index={ index }
+                  name={ recipe.strMeal }
+                  thumbImg={ recipe.strMealThumb }
+                />
+              );
+            },
+          )
+          : (drinks.drinksList ?? []).slice(0, 12).map(
             (recipe: DrinksType, index: number) => {
               return (
                 <RecipeCard

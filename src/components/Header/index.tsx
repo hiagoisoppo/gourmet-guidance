@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProfileIcon from '../../images/profileIcon.svg';
 import SearchIcon from '../../images/searchIcon.svg';
+import SearchBar from '../SearchBar';
 
 type HeaderProps = {
   title: string;
@@ -44,20 +45,7 @@ function Header({ title, showSearch = true }: HeaderProps) {
           </button>
         </div>
       )}
-      {search && (
-        <div>
-          <input
-            type="text"
-            placeholder="Search"
-            data-testid="search-input"
-          />
-          <button
-            type="button"
-          >
-            Search
-          </button>
-        </div>
-      )}
+      {search && <SearchBar />}
     </header>
   );
 }
