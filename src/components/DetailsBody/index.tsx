@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { MealsType, DrinksType } from '../../utils/reduxTypes';
+import RecommendedRecipeCarousel from '../RecommendedRecipeCarousel';
 
 import './detailsBody.css';
 
@@ -89,8 +90,7 @@ function DetailsBody({
         </>
       ) }
 
-      {/* <h2>Recommended</h2>
-      <div>MAP RECIPES RECOMENDADOS</div> */}
+      <RecommendedRecipeCarousel />
 
       <button
         className="startRecipeBtn"

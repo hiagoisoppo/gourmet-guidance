@@ -8,4 +8,5 @@ export interface RecipeCardProps {
   name: string;
   index: number;
   thumbImg: string;
+  isRecommendation?: boolean;
 }

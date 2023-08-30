@@ -7,11 +7,16 @@ function RecipeCard({
   name,
   index,
   thumbImg,
+  isRecommendation = false,
 }: RecipeCardProps) {
   return (
     <Link
       to={ `${path}/${id}` }
-      data-testid={ `${index}-recipe-card` }
+      data-testid={
+        isRecommendation
+          ? `${index}-recommendation-card`
+          : `${index}-recipe-card`
+      }
     >
       <img
         data-testid={ `${index}-card-img` }
@@ -19,7 +24,13 @@ function RecipeCard({
         alt={ name }
         width={ 50 }
       />
-      <span data-testid={ `${index}-card-name` }>
+      <span
+        data-testid={
+          isRecommendation
+            ? `${index}-recommendation-title`
+            : `${index}-card-name`
+        }
+      >
         { name }
       </span>
     </Link>

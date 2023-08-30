@@ -18,9 +18,11 @@ function RecipeDetails() {
   useEffect(() => {
     if (pathname === `/meals/${recipeId}`) {
       dispatch(fetchMealsList('id', recipeId));
+      dispatch(fetchDrinksList('name', ''));
     }
     if (pathname === `/drinks/${recipeId}`) {
       dispatch(fetchDrinksList('id', recipeId));
+      dispatch(fetchMealsList('name', ''));
     }
   }, [pathname, recipeId, dispatch]);
 
