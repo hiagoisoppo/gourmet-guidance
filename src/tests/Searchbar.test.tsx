@@ -122,9 +122,6 @@ describe('Testa as functionalidades da Searchbar (Meals)', () => {
     vi.clearAllMocks();
   });
 
-  const emailInput = 'email-input';
-  const passwordInput = 'password-input';
-  const loginBtn = 'login-submit-btn';
   const searchTopBtn = 'search-top-btn';
   const searchInput = 'search-input';
   const execSearchBtn = 'exec-search-btn';
