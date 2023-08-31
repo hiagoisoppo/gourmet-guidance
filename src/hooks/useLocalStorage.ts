@@ -21,15 +21,21 @@ function useLocalStorage() {
   const [inProgressRecipes, setInProgressRecipes] = useState<InProgressRecipesType>(
     () => {
       const item = localStorage.getItem('inProgressRecipes');
-      return item ? JSON.parse(item) : { drinks: {}, meals: {} };
+      return item ? JSON.parse(item) : {};
     },
   );
 
   useEffect(() => {
     if (user.email !== '') localStorage.setItem('user', JSON.stringify(user));
-    localStorage.setItem('doneRecipes', JSON.stringify(doneRecipes));
-    localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
-    localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
+    if (doneRecipes.length !== 0) {
+      localStorage.setItem('doneRecipes', JSON.stringify(doneRecipes));
+    }
+    if (favoriteRecipes.length !== 0) {
+      localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
+    }
+    if (Object.keys(inProgressRecipes).length !== 0) {
+      localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
+    }
   }, [user, doneRecipes, favoriteRecipes, inProgressRecipes]);
 
   const handleDoneRecipes = (
