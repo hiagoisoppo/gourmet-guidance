@@ -17,10 +17,10 @@ function Recipes() {
   const dispatch: Dispatch = useDispatch();
 
   useEffect(() => {
-    if (pathname.includes('/meals')) {
+    if (pathname === '/meals') {
       dispatch(fetchMealsList('name', ''));
     }
-    if (pathname.includes('/drinks')) {
+    if (pathname === '/drinks') {
       dispatch(fetchDrinksList('name', ''));
     }
   }, [pathname, dispatch]);

@@ -3,15 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { fetchMealsList } from '../../redux/actions/meals';
 import { fetchDrinksList } from '../../redux/actions/drinks';
-
-interface ReduxState {
-  meals: {
-    mealsList: any;
-  };
-  drinks: {
-    drinksList: any;
-  };
-}
+import { ReduxGeneralState } from '../../utils/reduxTypes';
 
 function SearchBar(): React.ReactElement {
   const [searchTerm, setSearchTerm] = useState('');
@@ -19,8 +11,7 @@ function SearchBar(): React.ReactElement {
   const [searchClicked, setSearchClicked] = useState(false);
   const dispatch: any = useDispatch();
   const navigate = useNavigate();
-  const meals = useSelector((state: ReduxState) => state.meals.mealsList);
-  const drinks = useSelector((state: ReduxState) => state.drinks.drinksList);
+  const { meals, drinks } = useSelector((state: ReduxGeneralState) => state);
 
   const handleSearch = () => {
     if (searchType === 'first_letter' && searchTerm.length !== 1) {
@@ -38,21 +29,21 @@ function SearchBar(): React.ReactElement {
     if (!searchClicked) return;
 
     if (location.pathname.includes('/meals')) {
-      if (meals && meals.length === 1) {
-        navigate(`/meals/${meals[0].idMeal}`);
-      } else if (meals === null) {
+      if (meals.mealsList && meals.mealsList.length === 1) {
+        navigate(`/meals/${meals.mealsList[0].idMeal}`);
+      } else if (meals.mealsList === null) {
         window.alert("Sorry, we haven't found any recipes for these filters.");
       }
     }
 
     if (location.pathname.includes('/drinks')) {
-      if (drinks && drinks.length === 1) {
-        navigate(`/drinks/${drinks[0].idDrink}`);
-      } else if (drinks === null) {
+      if (drinks.drinksList && drinks.drinksList.length === 1) {
+        navigate(`/drinks/${drinks.drinksList[0].idDrink}`);
+      } else if (drinks.drinksList === null) {
         window.alert("Sorry, we haven't found any recipes for these filters.");
       }
     }
-  }, [meals, drinks, navigate, searchClicked, location.pathname]);
+  }, [meals.mealsList, drinks.drinksList, navigate, searchClicked, location.pathname]);
 
   return (
     <div>

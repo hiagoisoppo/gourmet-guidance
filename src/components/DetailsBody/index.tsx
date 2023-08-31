@@ -26,6 +26,7 @@ function DetailsBody({
   useEffect(() => {
     const keys = Object.keys(inProgressRecipes.meals ?? {}).includes(recipeId);
     const keys2 = Object.keys(inProgressRecipes.drinks ?? {}).includes(recipeId);
+
     if (keys) {
       setAlreadyInProgress(true);
       setIngredientsList(inProgressRecipes.meals
@@ -47,7 +48,7 @@ function DetailsBody({
           return {
             checked: false,
             ingredient: ingredientEntry[1],
-            measure: measureFilter[index][1],
+            measure: measureFilter[index] ? measureFilter[index][1] : '',
           };
         });
         return ingredientsListMap;
