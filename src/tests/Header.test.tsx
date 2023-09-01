@@ -54,7 +54,7 @@ describe('Testa o Header por completo', () => {
     const profileButton = screen.getByTestId('profile-top-btn');
     await userEvent.click(profileButton);
 
-    const profile = screen.getByText('Perfil');
+    const profile = screen.getByText('Profile');
     expect(profile).toBeInTheDocument();
   });
 });

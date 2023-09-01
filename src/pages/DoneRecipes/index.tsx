@@ -1,4 +1,4 @@
-import DoneRecipes from '../../components/DoneRecipes';
+import DoneRecipes from '../../components/DoneRecipesComponent';
 import Header from '../../components/Header/index';
 
 function DoneRecipesPage() {
