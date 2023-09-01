@@ -3,10 +3,13 @@ import Header from '../../components/Header/index';
 
 function DoneRecipesPage() {
   return (
-    <div>
+    <main
+      className="container-fluid d-flex h-100 flex-column justify-content-center
+      align-items-center"
+    >
       <Header title="Done Recipes" showSearch={ false } />
       <DoneRecipes />
-    </div>
+    </main>
   );
 }
 

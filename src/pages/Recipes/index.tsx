@@ -26,7 +26,10 @@ function Recipes() {
   }, [pathname, dispatch]);
 
   return (
-    <>
+    <main
+      className="container-fluid d-flex h-100 flex-column justify-content-center
+      align-items-center"
+    >
       <Header
         title={ pathname === '/meals' ? 'Meals' : 'Drinks' }
         showSearch
@@ -64,7 +67,7 @@ function Recipes() {
           )}
       </article>
       <Footer />
-    </>
+    </main>
   );
 }
 

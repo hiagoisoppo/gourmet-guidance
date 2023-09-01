@@ -6,7 +6,10 @@ import Header from '../../components/Header/index';
 function Profile() {
   const { user } = useLocalStorage();
   return (
-    <div>
+    <main
+      className="container-fluid d-flex h-100 flex-column justify-content-center
+      align-items-center"
+    >
       <Header title="Profile" showSearch={ false } />
 
       <span data-testid="profile-email">{ user.email }</span>
@@ -34,7 +37,7 @@ function Profile() {
       </Link>
 
       <Footer />
-    </div>
+    </main>
   );
 }
 
