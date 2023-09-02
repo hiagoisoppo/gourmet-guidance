@@ -26,13 +26,19 @@ function Recipes() {
   }, [pathname, dispatch]);
 
   return (
-    <>
+    <main
+      className="d-flex h-100 flex-column justify-content-start
+      align-items-center w-100"
+    >
       <Header
         title={ pathname === '/meals' ? 'Meals' : 'Drinks' }
         showSearch
       />
       <CategoriesBar />
-      <article>
+      <article
+        className="d-flex w-100 flex-wrap justify-content-center
+        align-items-start gap-2 p-2"
+      >
         { pathname === '/meals'
           ? (meals.mealsList ?? []).slice(0, 12).map(
             (recipe: MealsType, index: number) => {
@@ -64,7 +70,7 @@ function Recipes() {
           )}
       </article>
       <Footer />
-    </>
+    </main>
   );
 }
 

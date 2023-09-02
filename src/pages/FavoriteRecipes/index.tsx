@@ -41,7 +41,10 @@ function FavoriteRecipes() {
   };
 
   return (
-    <div>
+    <main
+      className="d-flex h-100 flex-column justify-content-start
+      align-items-center w-100"
+    >
       <Header title="Favorite Recipes" showSearch={ false } />
       <nav>
         <button
@@ -83,7 +86,7 @@ function FavoriteRecipes() {
         />
       ))}
       {/* <Footer /> */}
-    </div>
+    </main>
   );
 }
 

@@ -17,36 +17,58 @@ function Header({ title, showSearch = true }: HeaderProps) {
   };
 
   return (
-    <header id="header">
-      <div id="header-profile">
-        <h1 data-testid="page-title">{title}</h1>
-        <button
-          type="button"
-          onClick={ () => navigate('/profile') }
+    <>
+      <header
+        id="header"
+        className="d-flex  justify-content-between w-100
+        align-items-center p-2 bg-secondary shadow"
+      >
+        <img
+          className="w-50"
+          src="/src/images/logomd.svg"
+          alt="Logo Svg"
+        />
+        <div
+          id="header-profile"
+          className="d-flex justify-content-end align-items-center gap-2 w-100"
         >
-          <img
-            src={ ProfileIcon }
-            alt="Profile Icon"
-            data-testid="profile-top-btn"
-          />
-        </button>
-      </div>
-      {showSearch && (
-        <div id="header-search">
+          {showSearch && (
+            <button
+              id="header-search"
+              className="btn shadow bg-tertiary w-30"
+              type="button"
+              onClick={ handleSearch }
+            >
+              <img
+                className="w-100"
+                src={ SearchIcon }
+                alt="Search Icon"
+                data-testid="search-top-btn"
+              />
+            </button>
+          )}
           <button
+            className="btn shadow bg-tertiary w-30"
             type="button"
-            onClick={ handleSearch }
+            onClick={ () => navigate('/profile') }
           >
             <img
-              src={ SearchIcon }
-              alt="Search Icon"
-              data-testid="search-top-btn"
+              className="w-100"
+              src={ ProfileIcon }
+              alt="Profile Icon"
+              data-testid="profile-top-btn"
             />
           </button>
         </div>
-      )}
+      </header>
       {search && <SearchBar />}
-    </header>
+      <h1
+        className="text-primary display-3 mt-3"
+        data-testid="page-title"
+      >
+        {title}
+      </h1>
+    </>
   );
 }
 

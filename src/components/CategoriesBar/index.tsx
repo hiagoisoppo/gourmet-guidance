@@ -39,8 +39,12 @@ function CategoriesBar() {
   }, [displayCategory, dispatch, pathname]);
 
   return (
-    <nav>
+    <nav
+      className="d-flex flex-wrap justify-content-center align-items-center gap-1 my-2"
+    >
       <button
+        className="btn btn-outline-secondary border-2 bg-primary p-1
+        text-uppercase text-secondary"
         data-testid="All-category-filter"
         onClick={ (e) => {
           e.preventDefault();
@@ -52,6 +56,7 @@ function CategoriesBar() {
       { pathname === '/meals'
         ? meals.categories.slice(0, 5).map((category, index) => (
           <button
+            className="btn btn-outline-secondary border-2 bg-primary p-1 text-uppercase"
             data-testid={ `${category}-category-filter` }
             key={ index }
             onClick={ (e) => {
@@ -63,11 +68,12 @@ function CategoriesBar() {
               }
             } }
           >
-            { category}
+            { category }
           </button>
         ))
         : drinks.categories.slice(0, 5).map((category, index) => (
           <button
+            className="btn btn-outline-secondary border-2 bg-primary p-1 text-uppercase"
             data-testid={ `${category}-category-filter` }
             key={ index }
             onClick={ (e) => {
@@ -79,7 +85,7 @@ function CategoriesBar() {
               }
             } }
           >
-            { category}
+            { category }
           </button>
         ))}
     </nav>

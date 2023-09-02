@@ -27,23 +27,28 @@ function RecipeDetails() {
   }, [pathname, recipeId, dispatch]);
 
   return (
-    pathname === `/meals/${recipeId}`
-      ? (meals.mealsList ?? []).map((meal: MealsType) => {
-        return (
-          <article key={ meal.idMeal }>
-            <DetailsHeader recipe={ meal } />
-            <DetailsBody recipeId={ recipeId as string } recipe={ meal } />
-          </article>
-        );
-      })
-      : (drinks.drinksList ?? []).map((drink: DrinksType) => {
-        return (
-          <article key={ drink.idDrink }>
-            <DetailsHeader recipe={ drink } />
-            <DetailsBody recipeId={ recipeId as string } recipe={ drink } />
-          </article>
-        );
-      })
+    <main
+      className="d-flex h-100 flex-column justify-content-start
+      align-items-center w-100"
+    >
+      {pathname === `/meals/${recipeId}`
+        ? (meals.mealsList ?? []).map((meal: MealsType) => {
+          return (
+            <article key={ meal.idMeal }>
+              <DetailsHeader recipe={ meal } />
+              <DetailsBody recipeId={ recipeId as string } recipe={ meal } />
+            </article>
+          );
+        })
+        : (drinks.drinksList ?? []).map((drink: DrinksType) => {
+          return (
+            <article key={ drink.idDrink }>
+              <DetailsHeader recipe={ drink } />
+              <DetailsBody recipeId={ recipeId as string } recipe={ drink } />
+            </article>
+          );
+        })}
+    </main>
   );
 }
 
