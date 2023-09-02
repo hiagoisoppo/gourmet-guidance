@@ -50,7 +50,6 @@ function SearchBar(): React.ReactElement {
       className="d-flex flex-column w-75 bg-primary
       justify-content-center m-2 shadow rounded p-2"
     >
-      {/* <h1 className="text-center">Search Bar</h1> */}
       <div className="d-flex gap-2 mb-1">
         <input
           className="form-control bg-tertiary p-2"

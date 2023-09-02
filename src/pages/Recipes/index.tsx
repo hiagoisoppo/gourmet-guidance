@@ -35,7 +35,10 @@ function Recipes() {
         showSearch
       />
       <CategoriesBar />
-      <article>
+      <article
+        className="container-fluid row gap-2 justify-content-center
+        align-items-center h-25 mb-5"
+      >
         { pathname === '/meals'
           ? (meals.mealsList ?? []).slice(0, 12).map(
             (recipe: MealsType, index: number) => {
