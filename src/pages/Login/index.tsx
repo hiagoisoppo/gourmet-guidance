@@ -47,9 +47,9 @@ function Login() {
         <div className="form-group d-flex flex-column align-items-center">
           <h1 className="display-4 m-4">Login</h1>
 
-          <label htmlFor="email" className="m-1">
+          <label htmlFor="email" className="m-1 w-100">
             <input
-              className="form-control bg-secondary"
+              className="form-control bg-secondary p-2"
               value={ user.email }
               data-testid="email-input"
               id="email"
@@ -62,9 +62,9 @@ function Login() {
             />
           </label>
 
-          <label htmlFor="password" className="m-1">
+          <label htmlFor="password" className="m-1 w-100">
             <input
-              className="form-control bg-secondary"
+              className="form-control bg-secondary p-2"
               value={ password }
               data-testid="password-input"
               id="password"
@@ -76,15 +76,16 @@ function Login() {
               } }
             />
           </label>
+
+          <button
+            className="btn btn-primary m-2 w-100 p-2"
+            disabled={ isDisabled }
+            type="submit"
+            data-testid="login-submit-btn"
+          >
+            Enter
+          </button>
         </div>
-        <button
-          className="btn btn-primary m-2"
-          disabled={ isDisabled }
-          type="submit"
-          data-testid="login-submit-btn"
-        >
-          Enter
-        </button>
       </form>
     </main>
   );

@@ -17,35 +17,55 @@ function Header({ title, showSearch = true }: HeaderProps) {
   };
 
   return (
-    <header id="header">
-      <div id="header-profile">
-        <h1 data-testid="page-title">{title}</h1>
-        <button
-          type="button"
-          onClick={ () => navigate('/profile') }
+    <header
+      id="header"
+      className="d-flex  flex-column position-fixed top-0 w-100
+       align-items-center"
+    >
+      <div className="d-flex justify-content-between p-2 bg-secondary shadow">
+        <img
+          className="w-50"
+          src="/src/images/logomd.svg"
+          alt="Logo Svg"
+        />
+        <div
+          id="header-profile"
+          className="d-flex justify-content-center align-items-center gap-2"
         >
-          <img
-            src={ ProfileIcon }
-            alt="Profile Icon"
-            data-testid="profile-top-btn"
-          />
-        </button>
-      </div>
-      {showSearch && (
-        <div id="header-search">
+          {showSearch && (
+            <button
+              id="header-search"
+              className="btn btn-outline-primary border-2 bg-tertiary w-50 p-1"
+              type="button"
+              onClick={ handleSearch }
+            >
+              <img
+                src={ SearchIcon }
+                alt="Search Icon"
+                data-testid="search-top-btn"
+              />
+            </button>
+          )}
           <button
+            className="btn btn-outline-primary border-2 bg-tertiary w-50 p-1"
             type="button"
-            onClick={ handleSearch }
+            onClick={ () => navigate('/profile') }
           >
             <img
-              src={ SearchIcon }
-              alt="Search Icon"
-              data-testid="search-top-btn"
+              src={ ProfileIcon }
+              alt="Profile Icon"
+              data-testid="profile-top-btn"
             />
           </button>
         </div>
-      )}
+      </div>
       {search && <SearchBar />}
+      <h1
+        className="text-primary m-3 display-3"
+        data-testid="page-title"
+      >
+        {title}
+      </h1>
     </header>
   );
 }
