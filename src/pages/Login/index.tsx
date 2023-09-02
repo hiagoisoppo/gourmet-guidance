@@ -28,62 +28,57 @@ function Login() {
 
   return (
     <main
-      className="container-fluid d-flex h-100
-      flex-column justify-content-center align-items-center p-0"
+      className="container-fluid d-flex h-100 bg-secondary
+      flex-column justify-content-end align-items-center p-0"
     >
-      <div
-        className="d-flex justify-content-center
-        align-items-start h-100 w-100 bg-primary pt-4"
-      >
-        <img
-          className="w-50"
-          src="/src/images/logo.svg"
-          alt="Logo Svg"
-        />
-      </div>
-      <img
-        className="w-100 position-absolute top-25 end-25 d-md-none"
-        src="/src/images/tomate.svg"
-        alt="Tomate"
-      />
       <form
-        className="h-100"
+        className="d-flex flex-column justify-content-center position-relative
+        align-items-center h-75 w-100 bg-tertiary pt-4 rounded-3 shadow-lg"
         onSubmit={ (e) => {
           e.preventDefault();
           navigate('/meals');
         } }
       >
-        <h1>Login</h1>
+        <img
+          className="w-50 position-absolute bottom-75"
+          src="/src/images/logo.svg"
+          alt="Logo Svg"
+        />
+        <div className="form-group d-flex flex-column align-items-center">
+          <h1 className="display-4 m-4">Login</h1>
 
-        <label htmlFor="email">
-          <input
-            value={ user.email }
-            data-testid="email-input"
-            id="email"
-            type="email"
-            placeholder="Email"
-            onChange={ (e) => {
-              setUser((prevUser) => ({ ...prevUser, email: e.target.value }));
-              handleValidateForm({ email: e.target.value, password });
-            } }
-          />
-        </label>
+          <label htmlFor="email" className="m-1">
+            <input
+              className="form-control bg-secondary"
+              value={ user.email }
+              data-testid="email-input"
+              id="email"
+              type="email"
+              placeholder="Email"
+              onChange={ (e) => {
+                setUser((prevUser) => ({ ...prevUser, email: e.target.value }));
+                handleValidateForm({ email: e.target.value, password });
+              } }
+            />
+          </label>
 
-        <label htmlFor="password">
-          <input
-            value={ password }
-            data-testid="password-input"
-            id="password"
-            type="password"
-            placeholder="Password"
-            onChange={ (e) => {
-              setPassword(e.target.value);
-              handleValidateForm({ email: user.email, password: e.target.value });
-            } }
-          />
-        </label>
-
+          <label htmlFor="password" className="m-1">
+            <input
+              className="form-control bg-secondary"
+              value={ password }
+              data-testid="password-input"
+              id="password"
+              type="password"
+              placeholder="Password"
+              onChange={ (e) => {
+                setPassword(e.target.value);
+                handleValidateForm({ email: user.email, password: e.target.value });
+              } }
+            />
+          </label>
+        </div>
         <button
+          className="btn btn-primary m-2"
           disabled={ isDisabled }
           type="submit"
           data-testid="login-submit-btn"
