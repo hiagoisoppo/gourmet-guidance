@@ -46,18 +46,35 @@ function SearchBar(): React.ReactElement {
   }, [meals.mealsList, drinks.drinksList, navigate, searchClicked, location.pathname]);
 
   return (
-    <div>
-      <h1>Search Bar</h1>
-      <input
-        type="text"
-        placeholder="Search..."
-        data-testid="search-input"
-        value={ searchTerm }
-        onChange={ (e) => setSearchTerm(e.target.value) }
-      />
-      <div>
-        <label>
+    <div
+      className="d-flex flex-column w-75 bg-primary
+      justify-content-center m-2 shadow rounded p-2"
+    >
+      {/* <h1 className="text-center">Search Bar</h1> */}
+      <div className="d-flex gap-2 mb-1">
+        <input
+          className="form-control bg-tertiary p-2"
+          type="text"
+          placeholder="Search..."
+          data-testid="search-input"
+          value={ searchTerm }
+          onChange={ (e) => setSearchTerm(e.target.value) }
+        />
+        <button
+          data-testid="exec-search-btn"
+          onClick={ handleSearch }
+          className="btn btn-secondary w-25 p-2"
+        >
+          Search
+        </button>
+      </div>
+      <div
+        className="text-tertiary p-2 d-flex
+        justify-content-between align-items-center"
+      >
+        <label className="form-check-label">
           <input
+            className="form-check-input m-1 bg-tertiary"
             type="radio"
             name="searchType"
             value="ingredient"
@@ -66,8 +83,9 @@ function SearchBar(): React.ReactElement {
           />
           Ingredient
         </label>
-        <label>
+        <label className="form-check-label">
           <input
+            className="form-check-input m-1 bg-tertiary"
             type="radio"
             name="searchType"
             value="name"
@@ -76,8 +94,9 @@ function SearchBar(): React.ReactElement {
           />
           Name
         </label>
-        <label>
+        <label className="form-check-label">
           <input
+            className="form-check-input m-1 bg-tertiary"
             type="radio"
             name="searchType"
             value="first_letter"
@@ -87,7 +106,6 @@ function SearchBar(): React.ReactElement {
           First Letter
         </label>
       </div>
-      <button data-testid="exec-search-btn" onClick={ handleSearch }>Search</button>
     </div>
   );
 }
