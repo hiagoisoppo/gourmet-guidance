@@ -6,8 +6,6 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 import { DrinksType, MealsType } from '../../utils/reduxTypes';
 import { FavoriteRecipesType } from '../../utils/localStorageTypes';
 
-import './detailsHeader.css';
-
 function DetailsHeader({ recipe }: { recipe: MealsType | DrinksType }) {
   const { favoriteRecipes, handleFavoriteRecipes } = useLocalStorage();
   const [linkHasBeenCopied, setLinkHasBeenCopied] = useState(false);
@@ -20,22 +18,33 @@ function DetailsHeader({ recipe }: { recipe: MealsType | DrinksType }) {
   });
 
   return (
-    <>
-      <img
-        className="detailsHeaderImage"
-        data-testid="recipe-photo"
-        src={ (recipe as MealsType).strMealThumb ?? (recipe as DrinksType).strDrinkThumb }
-        alt={ (recipe as MealsType).strMeal ?? (recipe as DrinksType).strDrink }
-      />
-      <div>
-        <div>
-          <span data-testid="recipe-category">
-            { (recipe as DrinksType).strAlcoholic ?? (recipe as MealsType).strCategory }
-          </span>
-        </div>
-        <div>
+    <div
+      className="d-flex flex-column justify-content-center shadow
+      align-items-center w-100 overflow-hidden h-10 position-relative"
+    >
+      <div
+        className="d-flex position-absolute h-100 w-100
+        justify-content-between align-items-start p-2"
+      >
+        <span
+          data-testid="recipe-category"
+          className="text-primary bg-secondary border border-2 border-primary p-2 rounded"
+        >
+          { (recipe as DrinksType).strAlcoholic ?? (recipe as MealsType).strCategory }
+        </span>
+        <h1
+          data-testid="recipe-title"
+          className="d-flex h-100 justify-content-center align-items-end
+           text-tertiary text-center"
+        >
+          { (recipe as MealsType).strMeal ?? (recipe as DrinksType).strDrink }
+        </h1>
+        <div
+          className="d-flex justify-content-between align-items-start gap-2 h-100"
+        >
           {linkHasBeenCopied && <span>Link copied!</span>}
           <button
+            className="btn btn-outline-primary border-2 bg-secondary p-1"
             data-testid="share-btn"
             onClick={ async (e) => {
               e.preventDefault();
@@ -46,6 +55,7 @@ function DetailsHeader({ recipe }: { recipe: MealsType | DrinksType }) {
             <img src={ shareIcon } alt="Share Icon" />
           </button>
           <button
+            className="btn btn-outline-primary border-2 bg-secondary p-1"
             onClick={ (e) => {
               e.preventDefault();
               handleFavoriteRecipes(
@@ -81,10 +91,13 @@ function DetailsHeader({ recipe }: { recipe: MealsType | DrinksType }) {
           </button>
         </div>
       </div>
-      <h1 data-testid="recipe-title">
-        { (recipe as MealsType).strMeal ?? (recipe as DrinksType).strDrink }
-      </h1>
-    </>
+      <img
+        className="w-100 h-auto"
+        data-testid="recipe-photo"
+        src={ (recipe as MealsType).strMealThumb ?? (recipe as DrinksType).strDrinkThumb }
+        alt={ (recipe as MealsType).strMeal ?? (recipe as DrinksType).strDrink }
+      />
+    </div>
   );
 }
 

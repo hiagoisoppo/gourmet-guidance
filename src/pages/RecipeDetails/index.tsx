@@ -28,8 +28,8 @@ function RecipeDetails() {
 
   return (
     <main
-      className="container-fluid d-flex h-100 flex-column justify-content-center
-      align-items-center"
+      className="d-flex h-100 flex-column justify-content-start
+      align-items-center w-100"
     >
       {pathname === `/meals/${recipeId}`
         ? (meals.mealsList ?? []).map((meal: MealsType) => {
