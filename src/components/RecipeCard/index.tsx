@@ -11,8 +11,13 @@ function RecipeCard({
 }: RecipeCardProps) {
   return (
     <Link
-      className="d-flex w-45 align-items-center justify-content-start shadow
-      text-decoration-none text-primary bg-tertiary p-2 rounded overflow-hidden h-15"
+      className={
+        isRecommendation
+          ? `d-flex align-items-center justify-content-start mx-4 my-3
+        shadow text-decoration-none text-primary bg-tertiary p-2 rounded overflow-hidden`
+          : `d-flex w-45 align-items-center justify-content-start
+        shadow text-decoration-none text-primary bg-tertiary p-2 rounded overflow-hidden`
+      }
       to={ `${path}/${id}` }
       data-testid={
         isRecommendation

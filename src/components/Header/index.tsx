@@ -30,16 +30,17 @@ function Header({ title, showSearch = true }: HeaderProps) {
         />
         <div
           id="header-profile"
-          className="d-flex justify-content-center align-items-center gap-2"
+          className="d-flex justify-content-end align-items-center gap-2 w-100"
         >
           {showSearch && (
             <button
               id="header-search"
-              className="btn btn-outline-primary border-2 bg-tertiary w-50 p-1"
+              className="btn shadow bg-tertiary w-30"
               type="button"
               onClick={ handleSearch }
             >
               <img
+                className="w-100"
                 src={ SearchIcon }
                 alt="Search Icon"
                 data-testid="search-top-btn"
@@ -47,11 +48,12 @@ function Header({ title, showSearch = true }: HeaderProps) {
             </button>
           )}
           <button
-            className="btn btn-outline-primary border-2 bg-tertiary w-50 p-1"
+            className="btn shadow bg-tertiary w-30"
             type="button"
             onClick={ () => navigate('/profile') }
           >
             <img
+              className="w-100"
               src={ ProfileIcon }
               alt="Profile Icon"
               data-testid="profile-top-btn"

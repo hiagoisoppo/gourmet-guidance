@@ -23,28 +23,22 @@ function DetailsHeader({ recipe }: { recipe: MealsType | DrinksType }) {
       align-items-center w-100 overflow-hidden h-10 position-relative"
     >
       <div
-        className="d-flex position-absolute h-100 w-100
-        justify-content-between align-items-start p-2"
+        className="d-flex position-absolute w-100
+        justify-content-between top-0 p-1"
       >
         <span
           data-testid="recipe-category"
-          className="text-primary bg-secondary border border-2 border-primary p-2 rounded"
+          className="text-primary bg-tertiary rounded shadow-sm px-3 py-1
+          fw-medium lh-lg"
         >
           { (recipe as DrinksType).strAlcoholic ?? (recipe as MealsType).strCategory }
         </span>
-        <h1
-          data-testid="recipe-title"
-          className="d-flex h-100 justify-content-center align-items-end
-           text-tertiary text-center"
-        >
-          { (recipe as MealsType).strMeal ?? (recipe as DrinksType).strDrink }
-        </h1>
+
         <div
-          className="d-flex justify-content-between align-items-start gap-2 h-100"
+          className="d-flex justify-content-end align-items-start gap-3 h-100 w-100"
         >
-          {linkHasBeenCopied && <span>Link copied!</span>}
           <button
-            className="btn btn-outline-primary border-2 bg-secondary p-1"
+            className="btn shadow bg-tertiary w-20 shadow-sm"
             data-testid="share-btn"
             onClick={ async (e) => {
               e.preventDefault();
@@ -52,10 +46,18 @@ function DetailsHeader({ recipe }: { recipe: MealsType | DrinksType }) {
               setLinkHasBeenCopied(true);
             } }
           >
-            <img src={ shareIcon } alt="Share Icon" />
+            <img src={ shareIcon } alt="Share Icon" className="w-75" />
+            {linkHasBeenCopied && (
+              <span
+                className="position-absolute text-tertiary bg-primary rounded
+                shadow-sm px-2 py-1 fw-medium top-100 start-67 bg-opacity-50 w-40"
+              >
+                Link copied!
+              </span>
+            )}
           </button>
           <button
-            className="btn btn-outline-primary border-2 bg-secondary p-1"
+            className="btn shadow bg-tertiary w-20 shadow"
             onClick={ (e) => {
               e.preventDefault();
               handleFavoriteRecipes(
@@ -80,17 +82,26 @@ function DetailsHeader({ recipe }: { recipe: MealsType | DrinksType }) {
                   src={ blackHeartIcon }
                   alt="blackHeartIcon"
                   data-testid="favorite-btn"
+                  className="w-75"
                 />
               ) : (
                 <img
                   src={ whiteHeartIcon }
                   alt="whiteHeartIcon"
                   data-testid="favorite-btn"
+                  className="w-75"
                 />
               )}
           </button>
         </div>
       </div>
+      <h1
+        data-testid="recipe-title"
+        className="position-absolute text-center text-tertiary
+        fs-1 top-67 w-100 bg-primary bg-opacity-50 p-3"
+      >
+        { (recipe as MealsType).strMeal ?? (recipe as DrinksType).strDrink }
+      </h1>
       <img
         className="w-100 h-auto"
         data-testid="recipe-photo"

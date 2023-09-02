@@ -17,125 +17,131 @@ function RecommendedRecipeCarousel() {
   };
 
   return (
-    <Carousel
-      activeIndex={ carouselIndex }
-      onSelect={ handleCarouselSelect }
+    <div
+      className="d-flex justify-content-center align-items-center w-100"
     >
-      <Carousel.Item>
-        {pathname === `/drinks/${recipeId}`
-          ? meals.mealsList
-            .slice(0, 6).map((recipe: MealsType, index) => {
-              if (index === 0 || index === 1) {
-                return (
-                  <RecipeCard
-                    isRecommendation
-                    key={ recipe.idMeal }
-                    path="/meals"
-                    id={ recipe.idMeal }
-                    index={ index }
-                    name={ recipe.strMeal }
-                    thumbImg={ recipe.strMealThumb }
-                  />
-                );
-              }
-              return null;
-            })
-          : drinks.drinksList
-            .slice(0, 6).map((recipe: DrinksType, index) => {
-              if (index === 0 || index === 1) {
-                return (
-                  <RecipeCard
-                    isRecommendation
-                    key={ recipe.idDrink }
-                    path="/drinks"
-                    id={ recipe.idDrink }
-                    index={ index }
-                    name={ recipe.strDrink }
-                    thumbImg={ recipe.strDrinkThumb }
-                  />
-                );
-              }
-              return null;
-            })}
-      </Carousel.Item>
+      <Carousel
+        className="w-100"
+        activeIndex={ carouselIndex }
+        onSelect={ handleCarouselSelect }
+        indicators={ false }
+      >
+        <Carousel.Item>
+          {pathname === `/drinks/${recipeId}`
+            ? meals.mealsList
+              .slice(0, 6).map((recipe: MealsType, index) => {
+                if (index === 0 || index === 1) {
+                  return (
+                    <RecipeCard
+                      isRecommendation
+                      key={ recipe.idMeal }
+                      path="/meals"
+                      id={ recipe.idMeal }
+                      index={ index }
+                      name={ recipe.strMeal }
+                      thumbImg={ recipe.strMealThumb }
+                    />
+                  );
+                }
+                return null;
+              })
+            : drinks.drinksList
+              .slice(0, 6).map((recipe: DrinksType, index) => {
+                if (index === 0 || index === 1) {
+                  return (
+                    <RecipeCard
+                      isRecommendation
+                      key={ recipe.idDrink }
+                      path="/drinks"
+                      id={ recipe.idDrink }
+                      index={ index }
+                      name={ recipe.strDrink }
+                      thumbImg={ recipe.strDrinkThumb }
+                    />
+                  );
+                }
+                return null;
+              })}
+        </Carousel.Item>
 
-      <Carousel.Item>
-        {pathname === `/drinks/${recipeId}`
-          ? meals.mealsList
-            .slice(0, 6).map((recipe: MealsType, index) => {
-              if (index === 2 || index === 3) {
-                return (
-                  <RecipeCard
-                    isRecommendation
-                    key={ recipe.idMeal }
-                    path="/meals"
-                    id={ recipe.idMeal }
-                    index={ index }
-                    name={ recipe.strMeal }
-                    thumbImg={ recipe.strMealThumb }
-                  />
-                );
-              }
-              return null;
-            })
-          : drinks.drinksList
-            .slice(0, 6).map((recipe: DrinksType, index) => {
-              if (index === 2 || index === 3) {
-                return (
-                  <RecipeCard
-                    isRecommendation
-                    key={ recipe.idDrink }
-                    path="/drinks"
-                    id={ recipe.idDrink }
-                    index={ index }
-                    name={ recipe.strDrink }
-                    thumbImg={ recipe.strDrinkThumb }
-                  />
-                );
-              }
-              return null;
-            })}
-      </Carousel.Item>
+        <Carousel.Item>
+          {pathname === `/drinks/${recipeId}`
+            ? meals.mealsList
+              .slice(0, 6).map((recipe: MealsType, index) => {
+                if (index === 2 || index === 3) {
+                  return (
+                    <RecipeCard
+                      isRecommendation
+                      key={ recipe.idMeal }
+                      path="/meals"
+                      id={ recipe.idMeal }
+                      index={ index }
+                      name={ recipe.strMeal }
+                      thumbImg={ recipe.strMealThumb }
+                    />
+                  );
+                }
+                return null;
+              })
+            : drinks.drinksList
+              .slice(0, 6).map((recipe: DrinksType, index) => {
+                if (index === 2 || index === 3) {
+                  return (
+                    <RecipeCard
+                      isRecommendation
+                      key={ recipe.idDrink }
+                      path="/drinks"
+                      id={ recipe.idDrink }
+                      index={ index }
+                      name={ recipe.strDrink }
+                      thumbImg={ recipe.strDrinkThumb }
+                    />
+                  );
+                }
+                return null;
+              })}
+        </Carousel.Item>
 
-      <Carousel.Item>
-        {pathname === `/drinks/${recipeId}`
-          ? meals.mealsList
-            .slice(0, 6).map((recipe: MealsType, index) => {
-              if (index === 4 || index === 5) {
-                return (
-                  <RecipeCard
-                    isRecommendation
-                    key={ recipe.idMeal }
-                    path="/meals"
-                    id={ recipe.idMeal }
-                    index={ index }
-                    name={ recipe.strMeal }
-                    thumbImg={ recipe.strMealThumb }
-                  />
-                );
-              }
-              return null;
-            })
-          : drinks.drinksList
-            .slice(0, 6).map((recipe: DrinksType, index) => {
-              if (index === 4 || index === 5) {
-                return (
-                  <RecipeCard
-                    isRecommendation
-                    key={ recipe.idDrink }
-                    path="/drinks"
-                    id={ recipe.idDrink }
-                    index={ index }
-                    name={ recipe.strDrink }
-                    thumbImg={ recipe.strDrinkThumb }
-                  />
-                );
-              }
-              return null;
-            })}
-      </Carousel.Item>
+        <Carousel.Item>
+          {pathname === `/drinks/${recipeId}`
+            ? meals.mealsList
+              .slice(0, 6).map((recipe: MealsType, index) => {
+                if (index === 4 || index === 5) {
+                  return (
+                    <RecipeCard
+                      isRecommendation
+                      key={ recipe.idMeal }
+                      path="/meals"
+                      id={ recipe.idMeal }
+                      index={ index }
+                      name={ recipe.strMeal }
+                      thumbImg={ recipe.strMealThumb }
+                    />
+                  );
+                }
+                return null;
+              })
+            : drinks.drinksList
+              .slice(0, 6).map((recipe: DrinksType, index) => {
+                if (index === 4 || index === 5) {
+                  return (
+                    <RecipeCard
+                      isRecommendation
+                      key={ recipe.idDrink }
+                      path="/drinks"
+                      id={ recipe.idDrink }
+                      index={ index }
+                      name={ recipe.strDrink }
+                      thumbImg={ recipe.strDrinkThumb }
+                    />
+                  );
+                }
+                return null;
+              })}
+        </Carousel.Item>
 
-    </Carousel>
+      </Carousel>
+    </div>
   );
 }
 

@@ -47,7 +47,7 @@ function SearchBar(): React.ReactElement {
 
   return (
     <div
-      className="d-flex flex-column w-75 bg-primary
+      className="d-flex flex-column w-auto bg-primary
       justify-content-center m-2 shadow rounded p-2"
     >
       <div className="d-flex gap-2 mb-1">
@@ -62,7 +62,7 @@ function SearchBar(): React.ReactElement {
         <button
           data-testid="exec-search-btn"
           onClick={ handleSearch }
-          className="btn btn-secondary w-25 p-2"
+          className="btn btn-secondary w-25 p-2 fw-semibold text-tertiary"
         >
           Search
         </button>

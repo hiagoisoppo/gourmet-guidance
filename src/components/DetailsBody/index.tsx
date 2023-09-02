@@ -4,8 +4,6 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 import { MealsType, DrinksType } from '../../utils/reduxTypes';
 import RecommendedRecipeCarousel from '../RecommendedRecipeCarousel';
 
-import './detailsBody.css';
-
 function DetailsBody({
   recipe,
   recipeId,
@@ -57,44 +55,67 @@ function DetailsBody({
   }, [inProgressRecipes, recipeId, recipe]);
 
   return (
-    <>
-      <h2>Ingredients</h2>
-      <ul>
-        {ingredientsList.map((ingredient, index) => (
-          <li
-            key={ index }
-            data-testid={ `${index}-ingredient-name-and-measure` }
-          >
-            { `${ingredient.measure} - ${ingredient.ingredient}` }
-          </li>
-        ))}
-      </ul>
+    <div
+      className="d-flex flex-column justify-content-center
+      align-items-center gap-3 mt-3 w-100"
+    >
+      <div
+        className="d-flex flex-column justify-content-center
+        align-items-center p-2 shadow-sm rounded w-90"
+      >
+        <h2 className="fs-3 fw-semibold text-secondary">Ingredients</h2>
+        <ul
+          className="d-flex flex-column justify-content-center
+          align-items-center w-100 fs-6 list-group list-group-flush"
+        >
+          {ingredientsList.map((ingredient, index) => (
+            <li
+              key={ index }
+              data-testid={ `${index}-ingredient-name-and-measure` }
+              className="list-group-item bg-transparent w-90 fw-light"
+            >
+              { `${ingredient.measure} - ${ingredient.ingredient}` }
+            </li>
+          ))}
+        </ul>
+      </div>
 
-      <h2>Instructions</h2>
-      <p data-testid="instructions">
-        { recipe.strInstructions }
-      </p>
+      <div
+        className="d-flex flex-column justify-content-center
+        align-items-center p-2 shadow-sm rounded w-90"
+      >
+        <h2 className="fs-3 fw-semibold text-secondary">Instructions</h2>
+        <p
+          className="text-start p-2 fs-6 fw-light"
+          data-testid="instructions"
+        >
+          { recipe.strInstructions }
+        </p>
+      </div>
 
       { (recipe as MealsType).strYoutube && (
-        <>
-          <h2>Video</h2>
+        <div
+          className="d-flex flex-column justify-content-center
+          align-items-center p-2 shadow-sm rounded w-90"
+        >
+          <h2 className="fs-3 fw-semibold text-secondary">Video</h2>
           <iframe
+            className="object-fit-none border rounded w-100"
             data-testid="video"
-            width="320"
-            height="240"
             src={ (recipe as MealsType).strYoutube.replace('watch?v=', 'embed/') }
             title="Spicy penne Arrabiata"
             allow="accelerometer; autoplay; clipboard-write;
             encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           />
-        </>
+        </div>
       ) }
 
       <RecommendedRecipeCarousel />
 
       <button
-        className="startRecipeBtn"
+        className="btn bg-primary p-1 shadow position-fixed bottom-0 rounded-0 rounded-top
+        text-secondary f-6 fw-bold w-100 text-uppercase"
         data-testid="start-recipe-btn"
         onClick={ async (e) => {
           e.preventDefault();
@@ -109,7 +130,7 @@ function DetailsBody({
       >
         {alreadyInProgress ? 'Continue Recipe' : 'Start Recipe'}
       </button>
-    </>
+    </div>
   );
 }
 
