@@ -11,8 +11,8 @@ function RecipeCard({
 }: RecipeCardProps) {
   return (
     <Link
-      className="col-3 d-flex flex-column align-items-center justify-content-center shadow
-      text-decoration-none text-primary bg-tertiary p-2 rounded"
+      className="d-flex w-45 align-items-center justify-content-start shadow
+      text-decoration-none text-primary bg-tertiary p-2 rounded overflow-hidden h-15"
       to={ `${path}/${id}` }
       data-testid={
         isRecommendation
@@ -21,14 +21,14 @@ function RecipeCard({
       }
     >
       <img
-        className="rounded-circle"
+        className="rounded"
         data-testid={ `${index}-card-img` }
         src={ thumbImg }
         alt={ name }
         width={ 50 }
       />
       <span
-        className="text-center text-uppercase text-weight-bold text-primary text-wrap"
+        className="text-center text-primary w-100"
         data-testid={
           isRecommendation
             ? `${index}-recommendation-title`

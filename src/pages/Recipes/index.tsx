@@ -27,8 +27,8 @@ function Recipes() {
 
   return (
     <main
-      className="container-fluid d-flex h-100 flex-column justify-content-center
-      align-items-center"
+      className="d-flex h-100 flex-column justify-content-start
+      align-items-center w-100"
     >
       <Header
         title={ pathname === '/meals' ? 'Meals' : 'Drinks' }
@@ -36,8 +36,8 @@ function Recipes() {
       />
       <CategoriesBar />
       <article
-        className="container-fluid row gap-2 justify-content-center
-        align-items-center h-25 mb-5"
+        className="d-flex w-100 flex-wrap justify-content-center
+        align-items-start gap-2 p-2"
       >
         { pathname === '/meals'
           ? (meals.mealsList ?? []).slice(0, 12).map(

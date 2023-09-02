@@ -17,12 +17,12 @@ function Header({ title, showSearch = true }: HeaderProps) {
   };
 
   return (
-    <header
-      id="header"
-      className="d-flex  flex-column position-fixed top-0 w-100
-       align-items-center"
-    >
-      <div className="d-flex justify-content-between p-2 bg-secondary shadow">
+    <>
+      <header
+        id="header"
+        className="d-flex  justify-content-between w-100
+        align-items-center p-2 bg-secondary shadow"
+      >
         <img
           className="w-50"
           src="/src/images/logomd.svg"
@@ -58,15 +58,15 @@ function Header({ title, showSearch = true }: HeaderProps) {
             />
           </button>
         </div>
-      </div>
+      </header>
       {search && <SearchBar />}
       <h1
-        className="text-primary m-3 display-3"
+        className="text-primary display-3 mt-3"
         data-testid="page-title"
       >
         {title}
       </h1>
-    </header>
+    </>
   );
 }
 

@@ -22,5 +22,40 @@ $position-values: (
   75: 75%,
   100: 100%
 );
-  
+
+$utilities: (
+  "overflow": (
+    responsive: true,
+    property: overflow,
+    values: visible hidden scroll auto,
+  ),
+  "height": (
+    property: height,
+    class: h,
+    values: (
+      15: 15%,
+      25: 25%,
+      50: 50%,
+      75: 75%,
+      100: 100%,
+      auto: auto
+    )
+  ),
+  "width": (
+  property: width,
+  class: w,
+  values: (
+    20: 20%,
+    25: 25%,
+    45: 45%,
+    50: 50%,
+    75: 75%,
+    100: 100%,
+    auto: auto
+  )
+),
+);
+
+
+
 @import 'bootstrap/scss/bootstrap.scss';
