@@ -13,10 +13,10 @@ function RecipeCard({
     <Link
       className={
         isRecommendation
-          ? `d-flex align-items-center justify-content-start mx-4 my-3
-        shadow text-decoration-none text-primary bg-tertiary p-2 rounded overflow-hidden`
-          : `d-flex w-45 align-items-center justify-content-start
-        shadow text-decoration-none text-primary bg-tertiary p-2 rounded overflow-hidden`
+          ? `d-flex flex-column mx-4 my-3 shadow text-decoration-none
+          text-primary bg-tertiary p-2 rounded overflow-hidden`
+          : `d-flex w-45 h-45 flex-column align-items-center justify-content-start p-2
+        shadow text-decoration-none text-primary bg-tertiary rounded overflow-hidden`
       }
       to={ `${path}/${id}` }
       data-testid={
@@ -26,14 +26,15 @@ function RecipeCard({
       }
     >
       <img
-        className="rounded"
+        className="rounded w-100"
         data-testid={ `${index}-card-img` }
         src={ thumbImg }
         alt={ name }
         width={ 50 }
       />
-      <span
-        className="text-center text-primary w-100"
+      <p
+        className="text-center text-primary w-100
+        text-truncate fs-6 fw-semibold mt-2 mb-1"
         data-testid={
           isRecommendation
             ? `${index}-recommendation-title`
@@ -41,7 +42,7 @@ function RecipeCard({
         }
       >
         { name }
-      </span>
+      </p>
     </Link>
   );
 }

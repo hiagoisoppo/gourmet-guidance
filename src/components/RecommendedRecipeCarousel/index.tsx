@@ -18,10 +18,10 @@ function RecommendedRecipeCarousel() {
 
   return (
     <div
-      className="d-flex justify-content-center align-items-center w-100"
+      className="d-flex flex-column justify-content-center align-items-center w-100 mb-5"
     >
+      <h2 className="fs-3 fw-semibold text-secondary mt-2 mb-0">Recommended</h2>
       <Carousel
-        className="w-100"
         activeIndex={ carouselIndex }
         onSelect={ handleCarouselSelect }
         indicators={ false }

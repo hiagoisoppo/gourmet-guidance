@@ -1,44 +1,13 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from '../../components/Header/index';
-// import Footer from '../../components/Footer';
 import FavoriteCard from '../../components/FavoriteCard/index';
-
-type FavoriteCardProps = {
-  id: string;
-  type: 'meal' | 'drink';
-  nationality: string;
-  category: string;
-  alcoholicOrNot: 'alcoholic' | 'non-alcoholic' | '';
-  name: string;
-  image: string;
-  index: number;
-};
-
-const INITIAL_STATE = [{
-  id: '52771',
-  type: 'meal',
-  nationality: 'Italian',
-  category: 'Vegetarian',
-  alcoholicOrNot: '',
-  name: 'Spicy Arrabiata Penne',
-  image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
-}, {
-  id: '11007',
-  type: 'drink',
-  nationality: '',
-  category: 'Ordinary Drink',
-  alcoholicOrNot: 'Alcoholic',
-  name: 'Aquamarine',
-  image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
-}] as FavoriteCardProps[];
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 function FavoriteRecipes() {
-  const [favoriteRecipes, setFavoriteRecipes] = useState(INITIAL_STATE);
-  const handleRemoveFavorite = (idToRemove: string) => {
-    const updatedFavorites = favoriteRecipes.filter((item) => item.id !== idToRemove);
-    setFavoriteRecipes(updatedFavorites);
-    localStorage.setItem('favoriteRecipes', JSON.stringify(updatedFavorites));
-  };
+  const { favoriteRecipes } = useLocalStorage();
+  const [displayFavoriteRecipes, setFavoriteRecipes] = useState(favoriteRecipes);
+
+  useEffect(() => {}, [displayFavoriteRecipes]);
 
   return (
     <main
@@ -46,46 +15,77 @@ function FavoriteRecipes() {
       align-items-center w-100"
     >
       <Header title="Favorite Recipes" showSearch={ false } />
-      <nav>
+      <nav
+        className="d-flex flex-wrap justify-content-center
+        align-items-start my-2 w-100"
+      >
         <button
+          className=" d-flex  flex-column justify-content-center
+          align-items-center btn p-2
+          text-primary fw-medium w-25 overflow-hidden"
           type="button"
           data-testid="filter-by-all-btn"
-          onClick={ () => setFavoriteRecipes(INITIAL_STATE) }
+          onClick={ () => setFavoriteRecipes(favoriteRecipes) }
         >
+          <img
+            src="src/images/All.svg"
+            alt="All Icon"
+            className="w-100"
+          />
           All
         </button>
         <button
+          className=" d-flex  flex-column justify-content-center
+          align-items-center btn p-2
+          text-primary fw-medium w-25 overflow-hidden"
           type="button"
           data-testid="filter-by-meal-btn"
-          onClick={ () => setFavoriteRecipes(INITIAL_STATE
+          onClick={ () => setFavoriteRecipes(favoriteRecipes
             .filter((item) => item.type === 'meal')) }
         >
+          <img
+            src="src/images/AllMeals.svg"
+            alt="All Icon"
+            className="w-100"
+          />
           Meals
         </button>
         <button
+          className=" d-flex  flex-column justify-content-center
+          align-items-center btn p-2
+          text-primary fw-medium w-25 overflow-hidden"
           type="button"
           data-testid="filter-by-drink-btn"
-          onClick={ () => setFavoriteRecipes(INITIAL_STATE
+          onClick={ () => setFavoriteRecipes(favoriteRecipes
             .filter((item) => item.type === 'drink')) }
         >
+          <img
+            src="src/images/AllDrinks.svg"
+            alt="All Icon"
+            className="w-100"
+          />
           Drinks
         </button>
       </nav>
-      {favoriteRecipes.map((item, index) => (
-        <FavoriteCard
-          key={ index }
-          id={ item.id }
-          type={ item.type }
-          nationality={ item.nationality }
-          category={ item.category }
-          alcoholicOrNot={ item.alcoholicOrNot }
-          name={ item.name }
-          image={ item.image }
-          index={ index }
-          onRemoveFavorite={ () => handleRemoveFavorite(item.id) }
-        />
-      ))}
-      {/* <Footer /> */}
+      <article
+        className="d-flex w-100 flex-wrap justify-content-start
+        align-items-start gap-2 ms-4 position-relative"
+      >
+        {displayFavoriteRecipes.map((item, index) => (
+          <FavoriteCard
+            key={ index }
+            id={ item.id }
+            type={ item.type }
+            nationality={ item.nationality }
+            category={ item.category }
+            alcoholicOrNot={ item.alcoholicOrNot }
+            name={ item.name }
+            image={ item.image }
+            index={ index }
+            updatePage={ setFavoriteRecipes }
+          />
+        ))}
+      </article>
     </main>
   );
 }

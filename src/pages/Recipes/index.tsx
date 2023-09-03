@@ -36,8 +36,8 @@ function Recipes() {
       />
       <CategoriesBar />
       <article
-        className="d-flex w-100 flex-wrap justify-content-center
-        align-items-start gap-2 p-2"
+        className="d-flex w-100 flex-wrap justify-content-start
+        align-items-start gap-2 ms-4"
       >
         { pathname === '/meals'
           ? (meals.mealsList ?? []).slice(0, 12).map(

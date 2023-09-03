@@ -14,34 +14,37 @@ function Footer() {
   };
 
   return (
-    <footer
-      data-testid="footer"
-      className="d-flex position-fixed bottom-0 w-100 p-1
-       align-items-center justify-content-evenly bg-secondary"
-    >
-      <button
-        className="btn shadow bg-tertiary w-15"
-        onClick={ handleDrinksClick }
+    <>
+      <div className="mt-5 text-tertiary">...</div>
+      <footer
+        data-testid="footer"
+        className="d-flex position-fixed bottom-0 w-100 p-1
+        align-items-center justify-content-evenly bg-secondary"
       >
-        <img
-          src={ drinksIcon }
-          alt="Drinks"
-          data-testid="drinks-bottom-btn"
-          className="w-100"
-        />
-      </button>
-      <button
-        className="btn shadow bg-tertiary w-15"
-        onClick={ handleMealsClick }
-      >
-        <img
-          src={ mealsIcon }
-          alt="Meals"
-          data-testid="meals-bottom-btn"
-          className="w-100"
-        />
-      </button>
-    </footer>
+        <button
+          className="btn shadow bg-tertiary w-15"
+          onClick={ handleDrinksClick }
+        >
+          <img
+            src={ drinksIcon }
+            alt="Drinks"
+            data-testid="drinks-bottom-btn"
+            className="w-100"
+          />
+        </button>
+        <button
+          className="btn shadow bg-tertiary w-15"
+          onClick={ handleMealsClick }
+        >
+          <img
+            src={ mealsIcon }
+            alt="Meals"
+            data-testid="meals-bottom-btn"
+            className="w-100"
+          />
+        </button>
+      </footer>
+    </>
   );
 }
 

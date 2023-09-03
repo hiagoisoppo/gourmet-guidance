@@ -19,12 +19,11 @@ function DetailsHeader({ recipe }: { recipe: MealsType | DrinksType }) {
 
   return (
     <div
-      className="d-flex flex-column justify-content-center shadow
-      align-items-center w-100 overflow-hidden h-10 position-relative"
+      className="d-flex flex-column justify-content-between shadow
+      align-items-center w-5vw overflow-hidden h-5vw position-relative"
     >
       <div
-        className="d-flex position-absolute w-100
-        justify-content-between top-0 p-1"
+        className="d-flex w-100 justify-content-between p-1 z-2"
       >
         <span
           data-testid="recipe-category"
@@ -42,14 +41,15 @@ function DetailsHeader({ recipe }: { recipe: MealsType | DrinksType }) {
             data-testid="share-btn"
             onClick={ async (e) => {
               e.preventDefault();
-              window.navigator.clipboard.writeText(window.location.href);
+              const urlToCopy = window.location.href.replace('/in-progress', '');
+              window.navigator.clipboard.writeText(urlToCopy);
               setLinkHasBeenCopied(true);
             } }
           >
             <img src={ shareIcon } alt="Share Icon" className="w-75" />
             {linkHasBeenCopied && (
               <span
-                className="position-absolute text-tertiary bg-primary rounded
+                className="position-absolute text-tertiary bg-primary rounded z-2
                 shadow-sm px-2 py-1 fw-medium top-100 start-67 bg-opacity-50 w-40"
               >
                 Link copied!
@@ -95,15 +95,15 @@ function DetailsHeader({ recipe }: { recipe: MealsType | DrinksType }) {
           </button>
         </div>
       </div>
-      <h1
+      <p
         data-testid="recipe-title"
-        className="position-absolute text-center text-tertiary
-        fs-1 top-67 w-100 bg-primary bg-opacity-50 p-3"
+        className="text-center text-tertiary z-2
+        fs-1 w-100 bg-primary bg-opacity-50 p-3 text-truncate"
       >
         { (recipe as MealsType).strMeal ?? (recipe as DrinksType).strDrink }
-      </h1>
+      </p>
       <img
-        className="w-100 h-auto"
+        className="position-absolute z-1 w-5vw h-5vw object-fit-cover"
         data-testid="recipe-photo"
         src={ (recipe as MealsType).strMealThumb ?? (recipe as DrinksType).strDrinkThumb }
         alt={ (recipe as MealsType).strMeal ?? (recipe as DrinksType).strDrink }

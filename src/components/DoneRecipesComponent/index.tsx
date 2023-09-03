@@ -3,9 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import shareImg from '../../images/shareIcon.svg';
 
-// Erro no req. 45 e 46 (Não acham o data-testid do botão de compartilhar)
-// Erro no req. 49 (Não está redirecionando pela imagem)
-
 function DoneRecipes() {
   const [selectedFilter, setSelectedFilter] = useState('none');
   const [linkHasBeenCopied, setLinkHasBeenCopied] = useState(false);
@@ -29,67 +26,149 @@ function DoneRecipes() {
 
   return (
     <>
-      <button
-        data-testid="filter-by-all-btn"
-        onClick={ () => handleSelectedFilter('none') }
+      <nav
+        className="d-flex flex-wrap justify-content-center
+        align-items-start my-2 w-100"
       >
-        All
-      </button>
-      <button
-        data-testid="filter-by-meal-btn"
-        onClick={ () => handleSelectedFilter('meals') }
+        <button
+          className=" d-flex  flex-column justify-content-center
+          align-items-center btn p-2
+          text-primary fw-medium w-25 overflow-hidden"
+          data-testid="filter-by-all-btn"
+          onClick={ () => handleSelectedFilter('none') }
+        >
+          <img
+            src="src/images/All.svg"
+            alt="All Icon"
+            className="w-100"
+          />
+          All
+        </button>
+
+        <button
+          className=" d-flex  flex-column  justify-content-center
+          align-items-center btn p-2
+          text-primary fw-medium w-25 overflow-hidden"
+          data-testid="filter-by-meal-btn"
+          onClick={ () => handleSelectedFilter('meals') }
+        >
+          <img
+            src="src/images/AllMeals.svg"
+            alt="All Icon"
+            className="w-100"
+          />
+          Meals
+        </button>
+
+        <button
+          className=" d-flex  flex-column  justify-content-center
+          align-items-center btn p-2
+          text-primary fw-medium w-25 overflow-hidden"
+          data-testid="filter-by-drink-btn"
+          onClick={ () => handleSelectedFilter('drinks') }
+        >
+          <img
+            src="src/images/AllDrinks.svg"
+            alt="All Icon"
+            className="w-100"
+          />
+          Drinks
+        </button>
+      </nav>
+
+      <article
+        className="d-flex w-100 flex-wrap justify-content-start
+        align-items-start gap-2 ms-4 position-relative"
       >
-        Meals
-      </button>
-      <button
-        data-testid="filter-by-drink-btn"
-        onClick={ () => handleSelectedFilter('drinks') }
-      >
-        Drinks
-      </button>
-      <div>
         {(filteredRecipes ?? []).map((recipe, index) => (
-          <div key={ recipe.id }>
-            <Link to={ `/${recipe.type}s/${recipe.id}` }>
+          <div
+            className="d-flex w-90 align-items-center position-relative
+            justify-content-between shadow text-decoration-none text-primary
+            bg-tertiary rounded overflow-hidden p-2"
+            key={ recipe.id }
+          >
+            <Link
+              to={ `/${recipe.type}s/${recipe.id}` }
+            >
               <img
+                className="position-absolute z-1 w-45 h-100 top-0
+                start-0 object-fit-cover"
                 src={ recipe.image }
                 alt="Imagem do Card"
                 data-testid={ `${index}-horizontal-image` }
-                width={ 50 }
               />
             </Link>
-            <button
-              data-testid={ `${index}-horizontal-name` }
-              onClick={ () => handleRedirect(recipe.type, recipe.id) }
+            <div
+              className="d-flex flex-column justify-content-start
+              align-items-start w-55 px-2"
             >
-              {recipe.name}
-            </button>
-            {recipe.type === 'meal' ? (
-              <>
-                <p data-testid={ `${index}-horizontal-top-text` }>
-                  {`${recipe.nationality} - ${recipe.category}`}
-                </p>
-                <ul>
-                  {Array.isArray(recipe.tags) && recipe.tags.length > 0
-                    && recipe.tags.map((tagName: string, tagIndex: number) => (
-                      <li
-                        key={ tagIndex }
-                        data-testid={ `${index}-${tagName}-horizontal-tag` }
-                      >
-                        {tagName}
-                      </li>
-                    ))}
-                </ul>
-
-              </>
-            ) : (
-              <p data-testid={ `${index}-horizontal-top-text` }>
-                {recipe.alcoholicOrNot}
-              </p>
+              <button
+                className="btn p-0 text-start text-primary w-100
+                fs-4 fw-bold text-truncate"
+                data-testid={ `${index}-horizontal-name` }
+                onClick={ () => handleRedirect(recipe.type, recipe.id) }
+              >
+                {recipe.name}
+              </button>
+              {recipe.type === 'meal' ? (
+                <>
+                  <p
+                    className="text-secondary fs-6 fw-medium"
+                    data-testid={ `${index}-horizontal-top-text` }
+                  >
+                    {`${recipe.nationality} - ${recipe.category}`}
+                  </p>
+                  <p
+                    className="fs-6 text-truncate w-100"
+                    data-testid={ `${index}-horizontal-done-date` }
+                  >
+                    {recipe.doneDate}
+                  </p>
+                  <ul
+                    className="p-0 m-0 d-flex flex-wrap w-100 fs-6 gap-2"
+                  >
+                    {Array.isArray(recipe.tags) && recipe.tags.length > 0
+                      && recipe.tags.map((tagName: string, tagIndex: number) => (
+                        <li
+                          className="bg-primary bg-opacity-50 text-tertiary px-3 py-1
+                          rounded text-center text-uppercase fw-medium list-group-item"
+                          key={ tagIndex }
+                          data-testid={ `${index}-${tagName}-horizontal-tag` }
+                        >
+                          {tagName}
+                        </li>
+                      ))}
+                  </ul>
+                </>
+              ) : (
+                <>
+                  <p
+                    className="text-secondary fs-6 fw-medium"
+                    data-testid={ `${index}-horizontal-top-text` }
+                  >
+                    {recipe.alcoholicOrNot}
+                  </p>
+                  <p
+                    className="fs-6 text-truncate w-100"
+                    data-testid={ `${index}-horizontal-done-date` }
+                  >
+                    {recipe.doneDate}
+                  </p>
+                </>
+              )}
+            </div>
+            {linkHasBeenCopied && (
+              <span
+                className="position-absolute text-tertiary bg-primary rounded z-2
+                shadow-sm px-2 py-1 fw-medium top-30 bg-opacity-50 w-40"
+              >
+                Link copied!
+              </span>
             )}
-            <p data-testid={ `${index}-horizontal-done-date` }>{recipe.doneDate}</p>
-            {linkHasBeenCopied && <span>Link copied!</span>}
+
             <button
+              className="btn shadow bg-tertiary w-15 p-1
+              shadow-sm position-absolute top-5 z-2"
               onClick={ async (e) => {
                 e.preventDefault();
                 window.navigator.clipboard.writeText(`http://localhost:3000/${recipe.type}s/${recipe.id}`); // window.location.href
@@ -97,16 +176,16 @@ function DoneRecipes() {
               } }
             >
               <img
+                className="w-75"
                 src={ shareImg }
                 alt="Compartilhar"
                 data-testid={ `${index}-horizontal-share-btn` }
 
               />
             </button>
-
           </div>
         ))}
-      </div>
+      </article>
     </>
   );
 }
