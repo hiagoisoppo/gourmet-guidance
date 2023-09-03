@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import { DrinksType, MealsType } from '../../utils/reduxTypes';
 import DetailsHeader from '../../components/DetailsHeader';
-import RecommendedRecipeCarousel from '../../components/RecommendedRecipeCarousel';
 
 interface Ingredient {
   checked: boolean;
