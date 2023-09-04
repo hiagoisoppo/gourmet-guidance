@@ -7,6 +7,10 @@ import { fetchCategoriesList as fetchDrinksCategories,
 import { fetchCategoriesList as fetchMealsCategories,
   fetchMealsList } from '../../redux/actions/meals';
 
+import AllMeals from '../../images/AllMeals.svg';
+import AllDrinks from '../../images/AllDrinks.svg';
+import Beef from '../../images/Beef.svg';
+
 function CategoriesBar() {
   const [displayCategory, setDisplayCategory] = useState('');
   const { pathname } = useLocation();
@@ -54,8 +58,8 @@ function CategoriesBar() {
       >
         <img
           src={ pathname === '/meals'
-            ? 'src/images/AllMeals.svg'
-            : 'src/images/AllDrinks.svg' }
+            ? AllMeals
+            : AllDrinks }
           alt="All Icon"
           className="w-100"
         />
