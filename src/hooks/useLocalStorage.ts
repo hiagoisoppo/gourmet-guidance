@@ -30,11 +30,11 @@ function useLocalStorage() {
     if (doneRecipes.length !== 0) {
       localStorage.setItem('doneRecipes', JSON.stringify(doneRecipes));
     }
-    if (favoriteRecipes.length !== 0) {
-      localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
-    }
     if (Object.keys(inProgressRecipes).length !== 0) {
       localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
+    }
+    if (favoriteRecipes.length > 0) {
+      localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
     }
   }, [user, doneRecipes, favoriteRecipes, inProgressRecipes]);
 
@@ -62,6 +62,7 @@ function useLocalStorage() {
       const filteredRecipes = favoriteRecipes.filter(
         (favoriteRecipe) => favoriteRecipe.id !== recipe.id,
       );
+      if (filteredRecipes.length === 0) window.localStorage.removeItem('favoriteRecipes');
       setFavoriteRecipes(filteredRecipes);
     }
   };

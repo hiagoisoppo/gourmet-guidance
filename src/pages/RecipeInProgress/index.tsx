@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
-import useLocalStorage from '../../hooks/useLocalStorage';
-import shareIcon from '../../images/shareIcon.svg';
-import blackHeartIcon from '../../images/blackHeartIcon.svg';
-import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import { DrinksType, MealsType } from '../../utils/reduxTypes';
+import DetailsHeader from '../../components/DetailsHeader';
 
 interface Ingredient {
   checked: boolean;
@@ -17,15 +14,6 @@ function RecipeInProgress() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const isMeal = pathname.includes('meals');
-
-  const { favoriteRecipes, handleFavoriteRecipes } = useLocalStorage();
-  const [linkHasBeenCopied, setLinkHasBeenCopied] = useState(false);
-
-  const [favorite, setFavorite] = useState<boolean>(() => {
-    return favoriteRecipes.some((favRecipe) => {
-      return (favRecipe.id === recipeId);
-    });
-  });
 
   const [recipe, setRecipe] = useState<any | null>(null);
   const [ingredientsList, setIngredientsList] = useState<Ingredient[]>([]);
@@ -116,96 +104,99 @@ function RecipeInProgress() {
   }
 
   return (
-    <div>
-      <img
-        className="detailsHeaderImage"
-        data-testid="recipe-photo"
-        src={ (recipe as MealsType).strMealThumb ?? (recipe as DrinksType).strDrinkThumb }
-        alt={ (recipe as MealsType).strMeal ?? (recipe as DrinksType).strDrink }
-      />
-      <h1 data-testid="recipe-title">{recipe.strMeal || recipe.strDrink}</h1>
-      <div>
-        {linkHasBeenCopied && <span>Link copied!</span>}
-        <button
-          data-testid="share-btn"
-          onClick={ async (e) => {
-            e.preventDefault();
-            const urlToCopy = window.location.href.replace('/in-progress', '');
-            window.navigator.clipboard.writeText(urlToCopy);
-            setLinkHasBeenCopied(true);
-          } }
-        >
-          <img src={ shareIcon } alt="Share Icon" />
-        </button>
-        <button
-          onClick={ (e) => {
-            e.preventDefault();
-            handleFavoriteRecipes(
-              {
-                id: (recipe as MealsType).idMeal ?? (recipe as DrinksType).idDrink,
-                type: (recipe as MealsType).strMeal ? 'meal' : 'drink',
-                category: recipe.strCategory,
-                nationality: (recipe as MealsType).strArea ?? '',
-                alcoholicOrNot: (recipe as DrinksType).strAlcoholic ?? '',
-                name: (recipe as MealsType).strMeal ?? (recipe as DrinksType).strDrink,
-                image: (recipe as MealsType).strMealThumb
-                ?? (recipe as DrinksType).strDrinkThumb,
-              },
-              (favorite ? 'remove' : 'add'),
-            );
-            setFavorite((prevFavorite) => !prevFavorite);
-          } }
-        >
-          { favorite
-            ? (
-              <img
-                src={ blackHeartIcon }
-                alt="blackHeartIcon"
-                data-testid="favorite-btn"
-              />
-            ) : (
-              <img
-                src={ whiteHeartIcon }
-                alt="whiteHeartIcon"
-                data-testid="favorite-btn"
-              />
-            )}
-        </button>
-      </div>
-      <p data-testid="recipe-category">
-        {recipe.strCategory || (recipe.strAlcoholic ? 'Alcoholic' : 'Non-Alcoholic')}
-      </p>
-      <p data-testid="instructions">{recipe.strInstructions}</p>
-      <h2>Ingredients</h2>
-      <ul>
-        {ingredientsList.map((ingredient, index) => (
-          <li key={ index }>
-            <label
-              data-testid={ `${index}-ingredient-step` }
-              style={ { textDecoration: ingredient.checked
-                ? 'line-through solid rgb(0, 0, 0)' : 'none' } }
-            >
-              <input
-                type="checkbox"
-                checked={ ingredient.checked }
-                onChange={ () => handleCheckboxChange(index) }
-              />
-              {`${ingredient.measure} - ${ingredient.ingredient}`}
-            </label>
-          </li>
-        ))}
-      </ul>
-      <button
-        data-testid="finish-recipe-btn"
-        disabled={ !allIngredientsChecked }
-        onClick={ () => {
-          saveDoneRecipe();
-          navigate('/done-recipes');
-        } }
+    <main
+      className="d-flex flex-column justify-content-start
+      align-items-center w-100"
+    >
+      <DetailsHeader recipe={ recipe } />
+
+      <div
+        className="d-flex flex-column justify-content-center
+        align-items-center gap-3 mt-3 w-100"
       >
-        Finish Recipe
-      </button>
-    </div>
+
+        <div
+          className="d-flex flex-column justify-content-center
+          align-items-center p-2 shadow-sm rounded w-90"
+        >
+          <h2 className="fs-3 fw-semibold text-secondary">Ingredients</h2>
+          <ul
+            className="d-flex flex-column justify-content-center
+            align-items-center w-100 fs-6 list-group list-group-flush"
+          >
+            {ingredientsList.map((ingredient, index) => (
+              <li
+                key={ index }
+                className="list-group-item bg-transparent w-90 fw-light"
+              >
+                <label
+                  data-testid={ `${index}-ingredient-step` }
+                  style={ { textDecoration: ingredient.checked
+                    ? 'line-through solid rgb(0, 0, 0)' : 'none' } }
+                >
+                  <input
+                    className="form-check-input me-2 bg-tertiary
+                    border-secondary border-2 p-1"
+                    type="checkbox"
+                    checked={ ingredient.checked }
+                    onChange={ () => handleCheckboxChange(index) }
+                  />
+                  {`${ingredient.measure} - ${ingredient.ingredient}`}
+                </label>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div
+          className="d-flex flex-column justify-content-center
+          align-items-center p-2 shadow-sm rounded w-90"
+        >
+          <h2 className="fs-3 fw-semibold text-secondary">Instructions</h2>
+          <p
+            className="text-start p-2 fs-6 fw-light"
+            data-testid="instructions"
+          >
+            { recipe.strInstructions }
+          </p>
+        </div>
+
+        { (recipe as MealsType).strYoutube && (
+          <div
+            className="d-flex flex-column justify-content-center
+            align-items-center p-2 shadow-sm rounded w-90"
+          >
+            <h2 className="fs-3 fw-semibold text-secondary">Video</h2>
+            <iframe
+              className="object-fit-none border rounded w-100"
+              data-testid="video"
+              src={ (recipe as MealsType).strYoutube.replace('watch?v=', 'embed/') }
+              title="Spicy penne Arrabiata"
+              allow="accelerometer; autoplay; clipboard-write;
+              encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        ) }
+
+        <div className="mt-3 text-tertiary">...</div>
+
+        <button
+          className="btn bg-primary p-1 shadow rounded-0
+          position-fixed bottom-0 rounded-top
+          text-secondary f-6 fw-bold w-100 text-uppercase"
+          data-testid="finish-recipe-btn"
+          disabled={ !allIngredientsChecked }
+          onClick={ () => {
+            saveDoneRecipe();
+            navigate('/done-recipes');
+          } }
+        >
+          Finish Recipe
+        </button>
+
+      </div>
+    </main>
   );
 }
 

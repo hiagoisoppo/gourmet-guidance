@@ -40,23 +40,32 @@ function CategoriesBar() {
 
   return (
     <nav
-      className="d-flex flex-wrap justify-content-center align-items-center gap-1 my-2"
+      className="d-flex flex-wrap justify-content-center
+      align-items-start my-2 w-100"
     >
       <button
-        className="btn btn-outline-secondary border-2 bg-primary p-1
-        text-uppercase text-secondary"
+        className=" d-flex  flex-column  justify-content-center align-items-center btn p-2
+        text-primary fw-medium w-25 overflow-hidden"
         data-testid="All-category-filter"
         onClick={ (e) => {
           e.preventDefault();
           setDisplayCategory('');
         } }
       >
+        <img
+          src={ pathname === '/meals'
+            ? 'src/images/AllMeals.svg'
+            : 'src/images/AllDrinks.svg' }
+          alt="All Icon"
+          className="w-100"
+        />
         All
       </button>
       { pathname === '/meals'
         ? meals.categories.slice(0, 5).map((category, index) => (
           <button
-            className="btn btn-outline-secondary border-2 bg-primary p-1 text-uppercase"
+            className=" d-flex  flex-column  justify-content-center w-25
+            align-items-center btn p-2 text-primary fw-medium"
             data-testid={ `${category}-category-filter` }
             key={ index }
             onClick={ (e) => {
@@ -68,12 +77,18 @@ function CategoriesBar() {
               }
             } }
           >
+            <img
+              src={ `/src/images/${category}.svg` }
+              alt={ `${category} icon` }
+              className="w-100"
+            />
             { category }
           </button>
         ))
         : drinks.categories.slice(0, 5).map((category, index) => (
           <button
-            className="btn btn-outline-secondary border-2 bg-primary p-1 text-uppercase"
+            className=" d-flex  flex-column  justify-content-center w-25
+            align-items-center btn p-2 text-primary fw-medium"
             data-testid={ `${category}-category-filter` }
             key={ index }
             onClick={ (e) => {
@@ -85,6 +100,11 @@ function CategoriesBar() {
               }
             } }
           >
+            <img
+              src={ `/src/images/${category.replace('/', '')}.svg` }
+              alt={ `${category} icon` }
+              className="w-100"
+            />
             { category }
           </button>
         ))}
