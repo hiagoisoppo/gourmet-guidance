@@ -28,7 +28,7 @@ function FavoriteRecipes() {
           onClick={ () => setFavoriteRecipes(favoriteRecipes) }
         >
           <img
-            src="src/images/All.svg"
+            src="../../images/All.svg"
             alt="All Icon"
             className="w-100"
           />
