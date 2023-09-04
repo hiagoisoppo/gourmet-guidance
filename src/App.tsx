@@ -9,6 +9,8 @@ import Recipes from './pages/Recipes';
 import RecipeDetails from './pages/RecipeDetails';
 import RecipeInProgress from './pages/RecipeInProgress';
 
+import All from '/src/images/All.svg';
+
 function App() {
   return (
     <Routes>
