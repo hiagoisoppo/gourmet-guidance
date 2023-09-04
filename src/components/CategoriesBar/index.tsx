@@ -9,8 +9,6 @@ import { fetchCategoriesList as fetchMealsCategories,
 
 import AllMeals from '../../images/AllMeals.svg';
 import AllDrinks from '../../images/AllDrinks.svg';
-import Beef from '../../images/Beef.svg';
-import Breakfast from '../../images/Breakfast.svg';
 
 function CategoriesBar() {
   const [displayCategory, setDisplayCategory] = useState('');
@@ -83,7 +81,7 @@ function CategoriesBar() {
             } }
           >
             <img
-              src={ category }
+              src={ `/public/${category}.svg` }
               alt={ `${category} icon` }
               className="w-100"
             />
@@ -106,7 +104,7 @@ function CategoriesBar() {
             } }
           >
             <img
-              src={ `/src/images/${category.replace('/', '')}.svg` }
+              src={ `/public/${category.replace('/', '')}.svg` }
               alt={ `${category} icon` }
               className="w-100"
             />

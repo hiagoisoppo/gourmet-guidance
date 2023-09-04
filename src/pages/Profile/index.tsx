@@ -3,6 +3,10 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header/index';
 
+import check from '../../images/check.svg';
+import fav from '../../images/fav.svg';
+import logout from '../../images/logout.svg';
+
 function Profile() {
   const { user } = useLocalStorage();
   return (
@@ -27,7 +31,7 @@ function Profile() {
         to="/done-recipes"
         data-testid="profile-done-btn"
       >
-        <img src="/src/images/check.svg" alt="Check icon" className="w-15" />
+        <img src={ check } alt="Check icon" className="w-15" />
         Done Recipes
       </Link>
 
@@ -38,7 +42,7 @@ function Profile() {
         to="/favorite-recipes"
         data-testid="profile-favorite-btn"
       >
-        <img src="/src/images/fav.svg" alt="Hearth icon" className="w-15" />
+        <img src={ fav } alt="Hearth icon" className="w-15" />
         Favorite Recipes
       </Link>
 
@@ -50,7 +54,7 @@ function Profile() {
         data-testid="profile-logout-btn"
         onClick={ () => localStorage.clear() }
       >
-        <img src="/src/images/logout.svg" alt="Exit icon" className="w-15" />
+        <img src={ logout } alt="Exit icon" className="w-15" />
         Logout
       </Link>
 
