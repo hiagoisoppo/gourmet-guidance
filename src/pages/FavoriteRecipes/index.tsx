@@ -3,6 +3,10 @@ import Header from '../../components/Header/index';
 import FavoriteCard from '../../components/FavoriteCard/index';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
+import All from '../../images/All.svg';
+import AllMeals from '../../images/AllMeals.svg';
+import AllDrinks from '../../images/AllDrinks.svg';
+
 function FavoriteRecipes() {
   const { favoriteRecipes } = useLocalStorage();
   const [displayFavoriteRecipes, setFavoriteRecipes] = useState(favoriteRecipes);
@@ -28,7 +32,7 @@ function FavoriteRecipes() {
           onClick={ () => setFavoriteRecipes(favoriteRecipes) }
         >
           <img
-            src="../../images/All.svg"
+            src={ All }
             alt="All Icon"
             className="w-100"
           />
@@ -44,7 +48,7 @@ function FavoriteRecipes() {
             .filter((item) => item.type === 'meal')) }
         >
           <img
-            src="src/images/AllMeals.svg"
+            src={ AllMeals }
             alt="All Icon"
             className="w-100"
           />
@@ -60,7 +64,7 @@ function FavoriteRecipes() {
             .filter((item) => item.type === 'drink')) }
         >
           <img
-            src="src/images/AllDrinks.svg"
+            src={ AllDrinks }
             alt="All Icon"
             className="w-100"
           />

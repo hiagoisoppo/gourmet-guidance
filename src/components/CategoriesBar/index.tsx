@@ -81,7 +81,7 @@ function CategoriesBar() {
             } }
           >
             <img
-              src={ `/public/${category}.svg` }
+              src={ `/src/images/${category}.svg` }
               alt={ `${category} icon` }
               className="w-100"
             />
@@ -104,7 +104,7 @@ function CategoriesBar() {
             } }
           >
             <img
-              src={ `/public/${category.replace('/', '')}.svg` }
+              src={ `/src/images/${category.replace('/', '')}.svg` }
               alt={ `${category} icon` }
               className="w-100"
             />

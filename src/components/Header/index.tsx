@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProfileIcon from '../../images/profileIcon.svg';
 import SearchIcon from '../../images/searchIcon.svg';
+import LogoMd from '../../images/logomd.svg';
 import SearchBar from '../SearchBar';
 
 type HeaderProps = {
@@ -25,7 +26,7 @@ function Header({ title, showSearch = true }: HeaderProps) {
       >
         <img
           className="w-50"
-          src="/src/images/logomd.svg"
+          src={ LogoMd }
           alt="Logo Svg"
         />
         <div

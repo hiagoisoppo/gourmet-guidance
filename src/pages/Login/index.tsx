@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useLocalStorage from '../../hooks/useLocalStorage';
+import Logo from '../../images/logo.svg';
 
 function Login() {
   const { user, setUser } = useLocalStorage();
@@ -41,7 +42,7 @@ function Login() {
       >
         <img
           className="w-50 position-absolute bottom-75"
-          src="/src/images/logo.svg"
+          src={ Logo }
           alt="Logo Svg"
         />
         <div className="form-group d-flex flex-column align-items-center">
