@@ -9,6 +9,19 @@ import { fetchCategoriesList as fetchMealsCategories,
 
 import AllMeals from '../../images/AllMeals.svg';
 import AllDrinks from '../../images/AllDrinks.svg';
+import Beef from '../../images/Beef.svg';
+import Breakfast from '../../images/Breakfast.svg';
+import Chicken from '../../images/Chicken.svg';
+import Dessert from '../../images/Dessert.svg';
+import Goat from '../../images/Goat.svg';
+import OrdinaryDrink from '../../images/Ordinary Drink.svg';
+import Cocktail from '../../images/Cocktail.svg';
+import Shake from '../../images/Shake.svg';
+import OtherUnknown from '../../images/Other  Unknown.svg';
+import Cocoa from '../../images/Cocoa.svg';
+
+const MealsCategoriesIcon = [Beef, Breakfast, Chicken, Dessert, Goat];
+const DrinksCategoriesIcon = [OrdinaryDrink, Cocktail, Shake, OtherUnknown, Cocoa];
 
 function CategoriesBar() {
   const [displayCategory, setDisplayCategory] = useState('');
@@ -81,7 +94,7 @@ function CategoriesBar() {
             } }
           >
             <img
-              src={ `/src/images/${category}.svg` }
+              src={ MealsCategoriesIcon[index] }
               alt={ `${category} icon` }
               className="w-100"
             />
@@ -104,7 +117,7 @@ function CategoriesBar() {
             } }
           >
             <img
-              src={ `/src/images/${category.replace('/', '')}.svg` }
+              src={ DrinksCategoriesIcon[index] }
               alt={ `${category} icon` }
               className="w-100"
             />

@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import shareImg from '../../images/shareIcon.svg';
+import All from '../../images/All.svg';
+import AllMeals from '../../images/AllMeals.svg';
+import AllDrinks from '../../images/AllDrinks.svg';
 
 function DoneRecipes() {
   const [selectedFilter, setSelectedFilter] = useState('none');
@@ -38,7 +41,7 @@ function DoneRecipes() {
           onClick={ () => handleSelectedFilter('none') }
         >
           <img
-            src="src/images/All.svg"
+            src={ All }
             alt="All Icon"
             className="w-100"
           />
@@ -53,7 +56,7 @@ function DoneRecipes() {
           onClick={ () => handleSelectedFilter('meals') }
         >
           <img
-            src="src/images/AllMeals.svg"
+            src={ AllMeals }
             alt="All Icon"
             className="w-100"
           />
@@ -68,7 +71,7 @@ function DoneRecipes() {
           onClick={ () => handleSelectedFilter('drinks') }
         >
           <img
-            src="src/images/AllDrinks.svg"
+            src={ AllDrinks }
             alt="All Icon"
             className="w-100"
           />
