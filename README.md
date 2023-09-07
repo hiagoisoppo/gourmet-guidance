@@ -32,8 +32,8 @@ This app is built with React technologies using custom Hooks and Redux for globa
 
 - Recipe List
 - Search and Filter
-- Revenue Details
-- favorites
+- Recipe Details
+- Favorites
 - Progress Tracking
 - User Profiles
 - Categories and Tags
