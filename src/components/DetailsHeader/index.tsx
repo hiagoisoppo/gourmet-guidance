@@ -20,7 +20,7 @@ function DetailsHeader({ recipe }: { recipe: MealsType | DrinksType }) {
   return (
     <div
       className="d-flex flex-column justify-content-between shadow
-      align-items-center w-5vw overflow-hidden h-5vw position-relative"
+      align-items-center w-5vw h-5vw position-relative superClass overflow-hidden"
     >
       <div
         className="d-flex w-100 justify-content-between p-1 z-2"
@@ -103,7 +103,7 @@ function DetailsHeader({ recipe }: { recipe: MealsType | DrinksType }) {
         { (recipe as MealsType).strMeal ?? (recipe as DrinksType).strDrink }
       </p>
       <img
-        className="position-absolute z-1 w-5vw h-5vw object-fit-cover"
+        className="position-absolute z-1 w-5vw h-5vw object-fit-cover img-fluid"
         data-testid="recipe-photo"
         src={ (recipe as MealsType).strMealThumb ?? (recipe as DrinksType).strDrinkThumb }
         alt={ (recipe as MealsType).strMeal ?? (recipe as DrinksType).strDrink }

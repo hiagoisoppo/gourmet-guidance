@@ -6,10 +6,16 @@
 }
 
 body, #root {
+  display: flex;
+  justify-content: center;
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
   height: 100vh;
   background-color: #f7eee5;
+}
+
+main, footer, .superClass {
+  max-width: 360px;
 }

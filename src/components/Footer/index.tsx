@@ -22,7 +22,7 @@ function Footer() {
         align-items-center justify-content-evenly bg-secondary"
       >
         <button
-          className="btn shadow bg-tertiary w-15"
+          className="btn shadow bg-tertiary w-15 h-100"
           onClick={ handleDrinksClick }
         >
           <img

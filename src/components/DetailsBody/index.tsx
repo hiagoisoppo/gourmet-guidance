@@ -57,7 +57,7 @@ function DetailsBody({
   return (
     <div
       className="d-flex flex-column justify-content-center
-      align-items-center gap-3 mt-3 w-100"
+      align-items-center gap-3 w-100 superClass"
     >
       <div
         className="d-flex flex-column justify-content-center

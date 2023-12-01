@@ -27,10 +27,7 @@ function RecipeDetails() {
   }, [pathname, recipeId, dispatch]);
 
   return (
-    <main
-      className="d-flex h-100 flex-column justify-content-start
-      align-items-center w-100"
-    >
+    <main>
       {pathname === `/meals/${recipeId}`
         ? (meals.mealsList ?? []).map((meal: MealsType) => {
           return (
