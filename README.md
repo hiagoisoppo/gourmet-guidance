@@ -23,7 +23,7 @@ Gourmet Guidance é um aplicativo móvel que funciona como um guia gourmet para 
 Durante o desenvolvimento utilizamos as seguintes tecnologias: ViteJs, TypeScript, ReactJs, Redux, ReactRouterDom, Sass, Bootstrap, ReactBootstrap, ReactTestingLibrary, Cypress, Mocha, Vitest. 
   
 ### Funcionalidades:
-- Listagem de receitas atualizadas.
+- Listagem de receitas atualizadas, atráves das APIs: [TheCocktailDB](https://www.thecocktaildb.com/api.php) e [TheMealDB](https://www.themealdb.com/).
 - Buscar e filtragem de receitas, atráves de categorias e palavras-chaves.
 - Aba detalhada com o passo a passo da receita, incluindo dicas de acompanhamentos.
 - Aba de Favoritos, para armazenar em LocalStorage todas as receitas que o usuário mais gostou.
@@ -80,7 +80,7 @@ Gourmet Guidance is a mobile app that acts as a gourmet guide for cooking and dr
 During development we use the following technologies: ViteJs, TypeScript, ReactJs, Redux, ReactRouterDom, Sass, Bootstrap, ReactBootstrap, ReactTestingLibrary, Cypress, Mocha, Vitest.
   
 ### Functionalities:
-- List of updated recipes.
+- List of updated recipes, using the APIs: [TheCocktailDB](https://www.thecocktaildb.com/api.php) and [TheMealDB](https://www.themealdb.com/).
 - Search and filter recipes, using categories and keywords.
 - Detailed tab with step-by-step instructions for the recipe, including follow-up tips.
 - Favorites tab, to store all the recipes that the user liked most in LocalStorage.
