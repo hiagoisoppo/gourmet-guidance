@@ -76,8 +76,7 @@ Durante o desenvolvimento utilizamos as seguintes tecnologias: ViteJs, TypeScrip
   <summary><strong>English</strong></summary>
 
 ### Description:
-Gourmet Guidance is a mobile app that acts as a gourmet guide for cooking and drinking enthusiasts. This project serves as the final project for the front-end module of Trybe's Web Development course. The app offers a variety of features, including recipes in progress, the option to share your favorite recipes, and much more!
-During development we use the following technologies: ViteJs, TypeScript, ReactJs, Redux, ReactRouterDom, Sass, Bootstrap, ReactBootstrap, ReactTestingLibrary, Cypress, Mocha, Vitest.
+Gourmet Guidance is a mobile app that acts as a gourmet guide for cooking and drinking enthusiasts. This project serves as the final project for the front-end module of Trybe's Web Development course. The app offers a variety of features, including recipes in progress, the option to share your favorite recipes, and much more! During development we use the following technologies: ViteJs, TypeScript, ReactJs, Redux, ReactRouterDom, Sass, Bootstrap, ReactBootstrap, ReactTestingLibrary, Cypress, Mocha, Vitest.
   
 ### Functionalities:
 - List of updated recipes, using the APIs: [TheCocktailDB](https://www.thecocktaildb.com/api.php) and [TheMealDB](https://www.themealdb.com/).
